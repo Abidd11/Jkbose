@@ -294,6 +294,7 @@
             width: 28px;
             height: 28px;
             background: rgba(0, 0, 0, 0.05);
+            border: none;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -301,18 +302,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 10;
+            font-size: 16px;
+            color: #999;
+            font-weight: bold;
         }
 
         .close-btn:hover {
             background: rgba(0, 0, 0, 0.1);
             transform: rotate(90deg) scale(1.1);
-        }
-
-        .close-btn svg {
-            width: 14px;
-            height: 14px;
-            stroke: #999;
-            stroke-width: 2;
+            color: #666;
         }
 
         /* Exit Animation */
@@ -335,12 +333,7 @@
 <body>
     <div class="dialog" id="dialog">
         <!-- Close Button -->
-        <div class="close-btn" onclick="closeDialog()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </div>
+        <button class="close-btn" onclick="closePopup()">✕</button>
 
         <!-- Icon with Ripple -->
         <div class="icon-wrapper">
@@ -393,7 +386,7 @@
     </div>
 
     <script>
-        function closeDialog() {
+        function closePopup() {
             const dialog = document.getElementById('dialog');
             dialog.classList.add('dialog-exit');
             setTimeout(() => {
