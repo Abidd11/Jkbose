@@ -1,96 +1,405 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Channel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Join WhatsApp Channel</title>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background: transparent;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            padding: 20px;
         }
-        
-        .toast {
-            background: white;
-            border-radius: 16px;
-            padding: 16px 20px;
-            max-width: 280px;
+
+        /* Small Dialog Box */
+        .dialog {
+            max-width: 300px;
             width: 100%;
+            background: white;
+            border-radius: 28px;
+            padding: 20px 18px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            animation: slideUp 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             position: relative;
+            animation: floatIn 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
+            backdrop-filter: blur(0px);
         }
-        
-        @keyframes slideUp {
+
+        /* Main Entrance Animation */
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(30px);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.02) translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Icon Container */
+        .icon-wrapper {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 12px;
+        }
+
+        /* Ripple Effect Background */
+        .ripple {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(37,211,102,0.2) 0%, rgba(37,211,102,0) 70%);
+            border-radius: 50%;
+            animation: ripple 2s ease-out infinite;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            animation: bounce 2s ease infinite;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .whatsapp-icon svg {
+            width: 38px;
+            height: 38px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* Title */
+        h3 {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #075E54 0%, #128C7E 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 6px;
+            animation: slideDown 0.5s ease 0.1s both;
+        }
+
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(-10px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
-        .close {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 18px;
-            cursor: pointer;
-            color: #999;
-        }
-        
-        .close:hover { color: #666; }
-        
-        .icon {
-            font-size: 32px;
-            margin-bottom: 4px;
-        }
-        
-        h4 {
-            font-size: 16px;
-            color: #075E54;
-            margin: 0 0 4px 0;
-        }
-        
-        p {
+
+        /* Message */
+        .message {
             font-size: 12px;
             color: #666;
-            margin: 0 0 12px 0;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            animation: fadeIn 0.5s ease 0.2s both;
         }
-        
-        .btn {
-            display: block;
-            background: #25D366;
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Features Row */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            animation: fadeInUp 0.5s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .feature-dot {
+            width: 32px;
+            height: 32px;
+            background: #E8F5E9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.4s ease backwards;
+        }
+
+        .feature:nth-child(1) .feature-dot { animation-delay: 0.3s; }
+        .feature:nth-child(2) .feature-dot { animation-delay: 0.4s; }
+        .feature:nth-child(3) .feature-dot { animation-delay: 0.5s; }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .feature-dot span {
+            font-size: 14px;
+        }
+
+        .feature-label {
+            font-size: 9px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        /* Join Button */
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
-            padding: 8px 16px;
+            padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: glowPulse 2s ease infinite 0.6s both;
         }
-        
-        .btn:hover {
-            background: #128C7E;
-            transform: scale(0.98);
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+            }
+        }
+
+        /* Button Shine Effect */
+        .join-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .join-btn:hover::before {
+            left: 100%;
+        }
+
+        .join-btn:hover {
+            transform: scale(1.03);
+            gap: 14px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .join-btn:active {
+            transform: scale(0.97);
+        }
+
+        .join-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .join-btn:hover svg:first-child {
+            transform: rotate(-5deg) scale(1.1);
+        }
+
+        .join-btn:hover svg:last-child {
+            transform: translateX(4px);
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .close-btn svg {
+            width: 14px;
+            height: 14px;
+            stroke: #999;
+            stroke-width: 2;
+        }
+
+        /* Exit Animation */
+        .dialog-exit {
+            animation: floatOut 0.3s ease forwards !important;
+        }
+
+        @keyframes floatOut {
+            0% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="toast">
-        <div class="close" onclick="this.parentElement.style.display='none'">×</div>
-        <div class="icon">💬</div>
-        <h4>Join WhatsApp Channel</h4>
-        <p>Get updates & study materials</p>
-        <a href="https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817" class="btn" target="_blank">Join Now →</a>
+    <div class="dialog" id="dialog">
+        <!-- Close Button -->
+        <div class="close-btn" onclick="closeDialog()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+
+        <!-- Icon with Ripple -->
+        <div class="icon-wrapper">
+            <div class="ripple"></div>
+            <div class="whatsapp-icon">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z"/>
+                </svg>
+            </div>
+        </div>
+
+        <h3>Join WhatsApp Channel</h3>
+        <div class="message">
+            Get latest updates, study materials & exam alerts!
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-dot">
+                    <span>📢</span>
+                </div>
+                <div class="feature-label">Updates</div>
+            </div>
+            <div class="feature">
+                <div class="feature-dot">
+                    <span>📚</span>
+                </div>
+                <div class="feature-label">Materials</div>
+            </div>
+            <div class="feature">
+                <div class="feature-dot">
+                    <span>🎯</span>
+                </div>
+                <div class="feature-label">Alerts</div>
+            </div>
+        </div>
+
+        <!-- Join Button -->
+        <a href="https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817" class="join-btn" target="_blank">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z"/>
+            </svg>
+            Join Now
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+            </svg>
+        </a>
     </div>
+
+    <script>
+        function closeDialog() {
+            const dialog = document.getElementById('dialog');
+            dialog.classList.add('dialog-exit');
+            setTimeout(() => {
+                dialog.style.display = 'none';
+            }, 300);
+        }
+    </script>
 </body>
 </html>
