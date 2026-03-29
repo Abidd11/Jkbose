@@ -1,12 +1,381 @@
-<div style="padding:20px;text-align:center;font-family:sans-serif;">
-  <h2 style="color:#1B2E8D;">🚀 New Update</h2>
-  <p>Your app has new features. Click below to update.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Join WhatsApp Channel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <a href="https://google.com"
-     style="display:inline-block;margin-top:10px;
-     background:#1B2E8D;color:white;
-     padding:10px 20px;border-radius:10px;
-     text-decoration:none;">
-     Update Now
-  </a>
-</div>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #075E54 0%, #128C7E 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        /* Main Card */
+        .card {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            padding: 40px 24px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.6s cubic-bezier(0.21, 1.11, 0.35, 1.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Slide Up Animation */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        .whatsapp-icon svg {
+            width: 45px;
+            height: 45px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Title */
+        h2 {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #075E54 0%, #128C7E 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+            animation: fadeIn 0.8s ease 0.2s both;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+            animation: fadeIn 0.8s ease 0.3s both;
+        }
+
+        .highlight {
+            font-size: 14px;
+            color: #25D366;
+            font-weight: 600;
+            margin-bottom: 24px;
+            animation: fadeIn 0.8s ease 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features List */
+        .features {
+            text-align: left;
+            margin: 24px 0;
+            padding: 0 8px;
+            animation: fadeIn 0.8s ease 0.5s both;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            animation: slideInLeft 0.5s ease backwards;
+        }
+
+        .feature-item:nth-child(1) { animation-delay: 0.5s; }
+        .feature-item:nth-child(2) { animation-delay: 0.6s; }
+        .feature-item:nth-child(3) { animation-delay: 0.7s; }
+        .feature-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feature-check {
+            width: 24px;
+            height: 24px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .feature-check svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        /* Join Button */
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            animation: fadeInUp 0.8s ease 0.9s both;
+            width: 100%;
+            max-width: 280px;
+            border: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .join-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+            gap: 16px;
+        }
+
+        .join-btn:active {
+            transform: scale(0.98);
+        }
+
+        .join-btn svg {
+            width: 22px;
+            height: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .join-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Close Button (optional) */
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 20px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            .join-btn {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Optional close button (remove if not needed) -->
+        <div class="close-btn" onclick="closeCard()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+
+        <!-- WhatsApp Icon -->
+        <div class="whatsapp-icon">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2M12.04 3.83C16.54 3.83 20.12 7.41 20.12 11.91C20.12 16.41 16.54 20 12.04 20C10.5 20 9.02 19.6 7.72 18.87L7.36 18.66L4.57 19.43L5.36 16.74L5.14 16.37C4.34 15.02 3.91 13.47 3.91 11.91C3.91 7.41 7.5 3.83 12.04 3.83M8.78 7.61C8.65 7.61 8.44 7.65 8.26 7.85C8.08 8.05 7.65 8.47 7.65 9.32C7.65 10.17 8.28 11 8.45 11.22C8.62 11.44 9.86 13.37 11.73 14.14C12.14 14.3 12.46 14.4 12.71 14.47C13.11 14.57 13.47 14.54 13.76 14.47C14.09 14.39 14.82 14.01 14.96 13.6C15.1 13.19 15.1 12.83 15.05 12.76C15 12.69 14.84 12.65 14.6 12.56C14.36 12.47 13.46 12.08 13.24 12C13.02 11.92 12.86 11.88 12.71 12.12C12.56 12.36 12.14 12.78 12 12.93C11.86 13.08 11.72 13.1 11.48 13C11.24 12.9 10.5 12.62 9.66 11.88C9.03 11.32 8.6 10.64 8.47 10.4C8.34 10.16 8.46 10.03 8.58 9.91C8.68 9.81 8.81 9.64 8.92 9.51C9.03 9.38 9.07 9.28 9.12 9.15C9.17 9.02 9.14 8.9 9.1 8.81C9.06 8.72 8.63 7.8 8.45 7.45C8.28 7.12 8.11 7.07 7.96 7.07C7.83 7.07 7.67 7.07 7.53 7.07C7.39 7.07 7.13 7.13 6.92 7.36C6.71 7.59 6.12 8.14 6.12 9.27C6.12 10.4 6.92 11.49 7.04 11.66C7.16 11.83 8.55 13.96 10.69 14.88C11.47 15.22 12.06 15.42 12.52 15.56C13.3 15.81 14 15.73 14.54 15.58C15.14 15.41 16.04 14.98 16.2 14.49C16.36 14 16.36 13.57 16.3 13.5C16.24 13.43 16.05 13.33 15.8 13.24C15.55 13.15 14.78 12.83 14.55 12.75C14.32 12.67 14.15 12.63 14.02 12.86C13.89 13.09 13.52 13.53 13.4 13.68C13.28 13.83 13.16 13.85 12.92 13.76C12.68 13.67 11.99 13.39 11.18 12.68C10.56 12.13 10.14 11.46 10.01 11.23C9.88 11 10 10.86 10.1 10.76C10.19 10.67 10.3 10.53 10.4 10.4C10.5 10.27 10.54 10.17 10.58 10.07C10.62 9.97 10.6 9.88 10.56 9.79C10.52 9.7 10.1 8.86 9.92 8.5C9.74 8.14 9.55 8.22 9.41 8.21C9.28 8.2 9.12 8.2 8.96 8.2C8.8 8.2 8.55 8.27 8.35 8.5C8.15 8.73 7.63 9.23 7.63 10.28C7.63 11.33 8.39 12.35 8.53 12.54C8.67 12.73 9.78 14.45 11.46 15.22C12.16 15.54 12.71 15.73 13.14 15.86C13.84 16.07 14.48 16.01 14.98 15.87C15.54 15.71 16.34 15.33 16.5 14.86C16.66 14.39 16.66 13.99 16.6 13.91C16.54 13.83 16.4 13.77 16.21 13.68C16.02 13.59 15.23 13.28 15 13.2C14.77 13.12 14.6 13.08 14.48 13.3C14.36 13.52 14.02 13.94 13.9 14.08C13.78 14.22 13.66 14.25 13.45 14.17C13.24 14.09 12.6 13.84 11.84 13.2C11.25 12.7 10.86 12.09 10.74 11.88C10.62 11.67 10.72 11.55 10.81 11.46C10.9 11.37 11 11.24 11.09 11.12C11.18 11 11.22 10.9 11.26 10.81C11.3 10.72 11.28 10.63 11.24 10.54C11.2 10.45 10.81 9.66 10.64 9.33C10.47 9 10.3 9.07 10.17 9.06C10.05 9.05 9.89 9.05 9.75 9.05Z"/>
+            </svg>
+        </div>
+
+        <h2>📢 Join WhatsApp Channel</h2>
+        <div class="subtitle">Stay updated with latest news & updates!</div>
+        <div class="highlight">✨ Exclusive Content Just for You ✨</div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-check">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <polygon points="20,6 9,17 4,12 5.5,10.5 9,14 18.5,4.5"></polygon>
+                    </svg>
+                </div>
+                <div class="feature-text">📢 <strong>Daily Updates</strong> - Latest news & announcements</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-check">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <polygon points="20,6 9,17 4,12 5.5,10.5 9,14 18.5,4.5"></polygon>
+                    </svg>
+                </div>
+                <div class="feature-text">📚 <strong>Study Materials</strong> - Notes, papers & syllabus</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-check">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <polygon points="20,6 9,17 4,12 5.5,10.5 9,14 18.5,4.5"></polygon>
+                    </svg>
+                </div>
+                <div class="feature-text">🎯 <strong>Exam Alerts</strong> - Datesheets & results first</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-check">
+                    <svg viewBox="0 0 24 24" fill="white">
+                        <polygon points="20,6 9,17 4,12 5.5,10.5 9,14 18.5,4.5"></polygon>
+                    </svg>
+                </div>
+                <div class="feature-text">💬 <strong>Community Support</strong> - Ask doubts & connect</div>
+            </div>
+        </div>
+
+        <!-- Join Button -->
+        <a href="https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817" class="join-btn" target="_blank">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z"/>
+            </svg>
+            Join Now on WhatsApp
+            <svg viewBox="0 0 24 24" fill="white">
+                <line x1="5" y1="12" x2="19" y2="12" stroke="white" stroke-width="2"/>
+                <polyline points="12 5 19 12 12 19" stroke="white" stroke-width="2" fill="none"/>
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        // Optional: Close card function
+        function closeCard() {
+            document.querySelector('.card').style.animation = 'slideDown 0.3s ease forwards';
+            setTimeout(() => {
+                // Optional: redirect or close
+                // window.close();
+            }, 300);
+        }
+
+        // Add slideDown animation for close
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateY(100px);
+                    display: none;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
