@@ -214,6 +214,53 @@
             font-weight: 500;
         }
 
+        /* Checkbox Container */
+        .checkbox-container {
+            margin: 16px 0 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            animation: fadeIn 0.5s ease 0.4s both;
+        }
+
+        .checkbox-container label {
+            font-size: 11px;
+            color: #666;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+            accent-color: #25D366;
+        }
+
+        /* Close Button */
+        .close-dialog-btn {
+            background: #f0f0f0;
+            color: #666;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 8px;
+            animation: fadeInUp 0.5s ease 0.45s both;
+        }
+
+        .close-dialog-btn:hover {
+            background: #e0e0e0;
+            transform: scale(0.98);
+        }
+
         /* Join Button */
         .join-btn {
             display: inline-flex;
@@ -286,7 +333,7 @@
             transform: translateX(4px);
         }
 
-        /* Close Button */
+        /* Close Button (X) */
         .close-btn {
             position: absolute;
             top: 12px;
@@ -373,7 +420,7 @@
         </div>
 
         <!-- Join Button -->
-        <a href="https://ratherabid.vercel.app" class="join-btn" target="_blank">
+        <a href="https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817" class="join-btn" target="_blank">
             <svg viewBox="0 0 24 24" fill="white">
                 <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z"/>
             </svg>
@@ -383,6 +430,16 @@
                 <polyline points="12 5 19 12 12 19"/>
             </svg>
         </a>
+
+        <!-- Don't show again checkbox -->
+        <div class="checkbox-container">
+            <label>
+                <input type="checkbox" id="dontShow"> Don't show again
+            </label>
+        </div>
+
+        <!-- Close button -->
+        <button class="close-dialog-btn" onclick="handleClose()">Close</button>
     </div>
 
     <script>
@@ -392,6 +449,20 @@
             setTimeout(() => {
                 dialog.style.display = 'none';
             }, 300);
+        }
+
+        function handleClose() {
+            const dontShowCheckbox = document.getElementById('dontShow');
+            
+            if (dontShowCheckbox && dontShowCheckbox.checked) {
+                // If checkbox is checked, notify Android to remember this choice
+                if (window.Android && window.Android.closeDialog) {
+                    window.Android.closeDialog();
+                }
+            } else {
+                // Just close normally
+                closePopup();
+            }
         }
     </script>
 </body>
