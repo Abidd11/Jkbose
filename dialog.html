@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Join WhatsApp Channel</title>
+    <title>JKBose Helper</title>
     <style>
         * {
             margin: 0;
@@ -17,32 +17,30 @@
             justify-content: center;
             align-items: center;
             background: transparent;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            padding: 16px;
         }
 
-        /* Small Dialog Box */
+        /* Small Dialog */
         .dialog {
-            max-width: 300px;
+            max-width: 280px;
             width: 100%;
-            background: white;
+            background: linear-gradient(135deg, #E6E6F2 0%, #C5CAE8 100%);
             border-radius: 28px;
             padding: 20px 18px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             position: relative;
             animation: floatIn 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
-            backdrop-filter: blur(0px);
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Main Entrance Animation */
+        /* Entrance Animation */
         @keyframes floatIn {
             0% {
                 opacity: 0;
                 transform: scale(0.7) translateY(30px);
             }
-            60% {
-                opacity: 1;
+            50% {
+                opacity: 0.8;
                 transform: scale(1.02) translateY(-5px);
             }
             100% {
@@ -51,81 +49,46 @@
             }
         }
 
-        /* Icon Container */
-        .icon-wrapper {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 12px;
-        }
-
-        /* Ripple Effect Background */
-        .ripple {
+        /* Close Button (X) */
+        .close-popup {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(37,211,102,0.2) 0%, rgba(37,211,102,0) 70%);
-            border-radius: 50%;
-            animation: ripple 2s ease-out infinite;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0.8);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* WhatsApp Icon */
-        .whatsapp-icon {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background: rgba(0, 0, 0, 0.08);
+            border: none;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-            animation: bounce 2s ease infinite;
-            z-index: 1;
+            cursor: pointer;
+            font-size: 16px;
+            color: #4a5568;
+            transition: all 0.25s ease;
+            z-index: 10;
         }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
+        .close-popup:hover {
+            background: rgba(0, 0, 0, 0.15);
+            transform: rotate(90deg) scale(1.05);
         }
 
-        .whatsapp-icon svg {
-            width: 38px;
-            height: 38px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        /* Title */
-        h3 {
-            font-size: 20px;
+        /* App Name */
+        .app-name {
+            text-align: center;
+            font-size: 18px;
             font-weight: 800;
-            background: linear-gradient(135deg, #075E54 0%, #128C7E 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 6px;
-            animation: slideDown 0.5s ease 0.1s both;
+            color: #1a202c;
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
+            animation: slideDown 0.4s ease 0.05s both;
         }
 
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-12px);
             }
             to {
                 opacity: 1;
@@ -133,70 +96,50 @@
             }
         }
 
-        /* Message */
-        .message {
-            font-size: 12px;
-            color: #666;
+        .tagline {
+            text-align: center;
+            font-size: 10px;
+            color: #4a5568;
             margin-bottom: 16px;
-            line-height: 1.5;
-            animation: fadeIn 0.5s ease 0.2s both;
+            animation: fadeIn 0.4s ease 0.1s both;
+            font-weight: 500;
         }
 
         @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Resources Grid - 2x3 */
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .resource-item {
+            background: white;
+            border-radius: 16px;
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            animation: cardPop 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) backwards;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        .resource-item:nth-child(1) { animation-delay: 0.05s; }
+        .resource-item:nth-child(2) { animation-delay: 0.1s; }
+        .resource-item:nth-child(3) { animation-delay: 0.15s; }
+        .resource-item:nth-child(4) { animation-delay: 0.2s; }
+        .resource-item:nth-child(5) { animation-delay: 0.25s; }
+        .resource-item:nth-child(6) { animation-delay: 0.3s; }
+
+        @keyframes cardPop {
             from {
                 opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Features Row */
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 18px;
-            animation: fadeInUp 0.5s ease 0.3s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .feature {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .feature-dot {
-            width: 32px;
-            height: 32px;
-            background: #E8F5E9;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: scaleIn 0.4s ease backwards;
-        }
-
-        .feature:nth-child(1) .feature-dot { animation-delay: 0.3s; }
-        .feature:nth-child(2) .feature-dot { animation-delay: 0.4s; }
-        .feature:nth-child(3) .feature-dot { animation-delay: 0.5s; }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0);
+                transform: scale(0.85);
             }
             to {
                 opacity: 1;
@@ -204,242 +147,234 @@
             }
         }
 
-        .feature-dot span {
-            font-size: 14px;
+        .resource-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+            background: #ffffff;
         }
 
-        .feature-label {
-            font-size: 9px;
-            color: #888;
-            font-weight: 500;
+        .resource-item:active {
+            transform: scale(0.95);
+        }
+
+        .resource-emoji {
+            font-size: 24px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .resource-name {
+            font-size: 10px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        /* Hot Badge */
+        .hot {
+            position: relative;
+        }
+
+        .hot::after {
+            content: "🔥";
+            position: absolute;
+            top: -4px;
+            right: 4px;
+            font-size: 8px;
+            animation: pulse 1s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.9; }
         }
 
         /* Checkbox Container */
-        .checkbox-container {
-            margin: 16px 0 12px 0;
+        .checkbox-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            animation: fadeIn 0.5s ease 0.4s both;
+            margin: 12px 0 10px;
+            animation: slideUp 0.4s ease 0.35s both;
         }
 
-        .checkbox-container label {
-            font-size: 11px;
-            color: #666;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .checkbox-container input[type="checkbox"] {
-            width: 14px;
-            height: 14px;
+        .checkbox-wrapper input {
+            width: 16px;
+            height: 16px;
             cursor: pointer;
             accent-color: #25D366;
         }
 
+        .checkbox-wrapper label {
+            font-size: 11px;
+            color: #4a5568;
+            font-weight: 500;
+            cursor: pointer;
+            user-select: none;
+        }
+
         /* Close Button */
-        .close-dialog-btn {
-            background: #f0f0f0;
-            color: #666;
-            padding: 10px 20px;
+        .close-btn {
+            background: rgba(0, 0, 0, 0.08);
+            color: #4a5568;
+            padding: 10px 16px;
             border-radius: 50px;
             border: none;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             width: 100%;
             margin-top: 8px;
-            animation: fadeInUp 0.5s ease 0.45s both;
+            animation: fadeInUp 0.4s ease 0.4s both;
         }
 
-        .close-dialog-btn:hover {
-            background: #e0e0e0;
-            transform: scale(0.98);
-        }
-
-        /* Join Button */
-        .join-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            width: 100%;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            animation: glowPulse 2s ease infinite 0.6s both;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% {
-                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
             }
-            50% {
-                box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-        }
-
-        /* Button Shine Effect */
-        .join-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .join-btn:hover::before {
-            left: 100%;
-        }
-
-        .join-btn:hover {
-            transform: scale(1.03);
-            gap: 14px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        .join-btn:active {
-            transform: scale(0.97);
-        }
-
-        .join-btn svg {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .join-btn:hover svg:first-child {
-            transform: rotate(-5deg) scale(1.1);
-        }
-
-        .join-btn:hover svg:last-child {
-            transform: translateX(4px);
-        }
-
-        /* Close Button (X) */
-        .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 28px;
-            height: 28px;
-            background: rgba(0, 0, 0, 0.05);
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-            font-size: 16px;
-            color: #999;
-            font-weight: bold;
         }
 
         .close-btn:hover {
-            background: rgba(0, 0, 0, 0.1);
-            transform: rotate(90deg) scale(1.1);
-            color: #666;
+            background: rgba(0, 0, 0, 0.15);
+            transform: scale(0.98);
+        }
+
+        .close-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 8px;
+            animation: btnGlow 2s ease infinite 0.4s both;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        @keyframes btnGlow {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+            }
+            50% {
+                box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+            }
+        }
+
+        .whatsapp:hover {
+            transform: scale(0.98);
+            gap: 10px;
+        }
+
+        .whatsapp:active {
+            transform: scale(0.96);
+        }
+
+        .whatsapp svg {
+            width: 16px;
+            height: 16px;
         }
 
         /* Exit Animation */
         .dialog-exit {
-            animation: floatOut 0.3s ease forwards !important;
+            animation: floatOut 0.25s ease forwards !important;
         }
 
         @keyframes floatOut {
             0% {
                 opacity: 1;
-                transform: scale(1) translateY(0);
+                transform: scale(1);
             }
             100% {
                 opacity: 0;
-                transform: scale(0.8) translateY(20px);
+                transform: scale(0.85) translateY(15px);
             }
         }
     </style>
 </head>
 <body>
     <div class="dialog" id="dialog">
-        <!-- Close Button -->
-        <button class="close-btn" onclick="closePopup()">✕</button>
+        <!-- Close Button (X) -->
+        <button class="close-popup" onclick="closePopup()">✕</button>
 
-        <!-- Icon with Ripple -->
-        <div class="icon-wrapper">
-            <div class="ripple"></div>
-            <div class="whatsapp-icon">
-                <svg viewBox="0 0 24 24" fill="white">
-                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z"/>
-                </svg>
+        <!-- App Name -->
+        <div class="app-name">📚 JKBose Helper</div>
+        <div class="tagline">Your Complete Study Companion</div>
+
+        <!-- Resources Grid -->
+        <div class="resources">
+            <div class="resource-item" onclick="openFeature('notes')">
+                <span class="resource-emoji">📝</span>
+                <div class="resource-name">Notes</div>
+            </div>
+            <div class="resource-item hot" onclick="openFeature('pyqs')">
+                <span class="resource-emoji">📄</span>
+                <div class="resource-name">PYQs</div>
+            </div>
+            <div class="resource-item" onclick="openFeature('guess')">
+                <span class="resource-emoji">🎯</span>
+                <div class="resource-name">Guess</div>
+            </div>
+            <div class="resource-item" onclick="openFeature('important')">
+                <span class="resource-emoji">⭐</span>
+                <div class="resource-name">Important</div>
+            </div>
+            <div class="resource-item" onclick="openFeature('books')">
+                <span class="resource-emoji">📖</span>
+                <div class="resource-name">Books</div>
+            </div>
+            <div class="resource-item" onclick="openFeature('syllabus')">
+                <span class="resource-emoji">📋</span>
+                <div class="resource-name">Syllabus</div>
             </div>
         </div>
 
-        <h3>Join WhatsApp Channel</h3>
-        <div class="message">
-            Get latest updates, study materials & exam alerts!
-        </div>
-
-        <!-- Features -->
-        <div class="features">
-            <div class="feature">
-                <div class="feature-dot">
-                    <span>📢</span>
-                </div>
-                <div class="feature-label">Updates</div>
-            </div>
-            <div class="feature">
-                <div class="feature-dot">
-                    <span>📚</span>
-                </div>
-                <div class="feature-label">Materials</div>
-            </div>
-            <div class="feature">
-                <div class="feature-dot">
-                    <span>🎯</span>
-                </div>
-                <div class="feature-label">Alerts</div>
-            </div>
-        </div>
-
-        <!-- Join Button -->
-        <a href="https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817" class="join-btn" target="_blank">
+        <!-- WhatsApp Button -->
+        <button class="whatsapp" onclick="joinWhatsApp()">
             <svg viewBox="0 0 24 24" fill="white">
                 <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z"/>
             </svg>
-            Join Now
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-            </svg>
-        </a>
+            Join WhatsApp Community
+        </button>
 
-        <!-- Don't show again checkbox -->
-        <div class="checkbox-container">
-            <label>
-                <input type="checkbox" id="dontShow"> Don't show again
-            </label>
+        <!-- Don't Show Again Checkbox -->
+        <div class="checkbox-wrapper">
+            <input type="checkbox" id="dontShow">
+            <label for="dontShow">Don't show again</label>
         </div>
 
-        <!-- Close button -->
-        <button class="close-dialog-btn" onclick="handleClose()">Close</button>
+        <!-- Close Button -->
+        <button class="close-btn" onclick="handleClose()">Close</button>
     </div>
 
     <script>
@@ -448,21 +383,60 @@
             dialog.classList.add('dialog-exit');
             setTimeout(() => {
                 dialog.style.display = 'none';
-            }, 300);
+            }, 250);
         }
 
         function handleClose() {
-            const dontShowCheckbox = document.getElementById('dontShow');
+            const dialog = document.getElementById('dialog');
+            const dontShow = document.getElementById('dontShow');
             
-            if (dontShowCheckbox && dontShowCheckbox.checked) {
-                // If checkbox is checked, notify Android to remember this choice
-                if (window.Android && window.Android.closeDialog) {
-                    window.Android.closeDialog();
+            // If checkbox is checked, save to localStorage
+            if (dontShow && dontShow.checked) {
+                localStorage.setItem('dontShowDialog', 'true');
+                // Notify Android if available
+                if (window.Android && window.Android.dontShowAgain) {
+                    window.Android.dontShowAgain();
                 }
-            } else {
-                // Just close normally
-                closePopup();
             }
+            
+            dialog.classList.add('dialog-exit');
+            setTimeout(() => {
+                dialog.style.display = 'none';
+            }, 250);
+        }
+
+        function openFeature(feature) {
+            // Add haptic feedback animation
+            const clickedItem = event.currentTarget;
+            clickedItem.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                clickedItem.style.transform = '';
+            }, 150);
+            
+            if (window.Android && window.Android.openFeature) {
+                window.Android.openFeature(feature);
+            }
+        }
+
+        function joinWhatsApp() {
+            const btn = document.querySelector('.whatsapp');
+            btn.style.transform = 'scale(0.96)';
+            setTimeout(() => {
+                btn.style.transform = '';
+            }, 150);
+            
+            const whatsappUrl = 'https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817';
+            
+            if (window.Android && window.Android.openUrl) {
+                window.Android.openUrl(whatsappUrl);
+            } else {
+                window.open(whatsappUrl, '_blank');
+            }
+        }
+
+        // Check if dialog should be shown
+        if (localStorage.getItem('dontShowDialog') === 'true') {
+            document.getElementById('dialog').style.display = 'none';
         }
     </script>
 </body>
