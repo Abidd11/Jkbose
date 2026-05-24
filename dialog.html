@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>JKBose Helper</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             min-height: 100vh;
@@ -17,427 +13,110 @@
             justify-content: center;
             align-items: center;
             background: transparent;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
             padding: 16px;
         }
 
-        /* Small Dialog */
         .dialog {
-            max-width: 280px;
+            max-width: 300px;
             width: 100%;
-            background: linear-gradient(135deg, #E6E6F2 0%, #C5CAE8 100%);
-            border-radius: 28px;
-            padding: 20px 18px;
-            position: relative;
-            animation: floatIn 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
-            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Entrance Animation */
-        @keyframes floatIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.7) translateY(30px);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(1.02) translateY(-5px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* Close Button (X) */
-        .close-popup {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 28px;
-            height: 28px;
-            background: rgba(0, 0, 0, 0.08);
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 16px;
-            color: #4a5568;
-            transition: all 0.25s ease;
-            z-index: 10;
-        }
-
-        .close-popup:hover {
-            background: rgba(0, 0, 0, 0.15);
-            transform: rotate(90deg) scale(1.05);
-        }
-
-        /* App Name */
-        .app-name {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 800;
-            color: #1a202c;
-            margin-bottom: 4px;
-            letter-spacing: -0.3px;
-            animation: slideDown 0.4s ease 0.05s both;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .tagline {
-            text-align: center;
-            font-size: 10px;
-            color: #4a5568;
-            margin-bottom: 16px;
-            animation: fadeIn 0.4s ease 0.1s both;
-            font-weight: 500;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Resources Grid - 2x3 */
-        .resources {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .resource-item {
-            background: white;
-            border-radius: 16px;
-            padding: 8px 4px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            animation: cardPop 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) backwards;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-        }
-
-        .resource-item:nth-child(1) { animation-delay: 0.05s; }
-        .resource-item:nth-child(2) { animation-delay: 0.1s; }
-        .resource-item:nth-child(3) { animation-delay: 0.15s; }
-        .resource-item:nth-child(4) { animation-delay: 0.2s; }
-        .resource-item:nth-child(5) { animation-delay: 0.25s; }
-        .resource-item:nth-child(6) { animation-delay: 0.3s; }
-
-        @keyframes cardPop {
-            from {
-                opacity: 0;
-                transform: scale(0.85);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .resource-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
             background: #ffffff;
-        }
-
-        .resource-item:active {
-            transform: scale(0.95);
-        }
-
-        .resource-emoji {
-            font-size: 24px;
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        .resource-name {
-            font-size: 10px;
-            font-weight: 700;
-            color: #2d3748;
-        }
-
-        /* Hot Badge */
-        .hot {
+            border-radius: 32px;
+            padding: 24px;
             position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 2px solid #C5CAE8;
         }
 
-        .hot::after {
-            content: "🔥";
-            position: absolute;
-            top: -4px;
-            right: 4px;
-            font-size: 8px;
-            animation: pulse 1s ease infinite;
+        .app-name { 
+            text-align: center; 
+            font-size: 18px; 
+            font-weight: 800; 
+            color: #1a202c; 
+            margin-bottom: 20px; 
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C5CAE8;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.15); opacity: 0.9; }
+        .quote-box {
+            background: #C5CAE8;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .quote-text { 
+            font-size: 14px; 
+            font-style: italic; 
+            color: #2d3748; 
+            line-height: 1.6; 
+            font-weight: 700; 
         }
 
-        /* Checkbox Container */
-        .checkbox-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 12px 0 10px;
-            animation: slideUp 0.4s ease 0.35s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .checkbox-wrapper input {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            accent-color: #25D366;
-        }
-
-        .checkbox-wrapper label {
+        .support-msg {
+            text-align: center;
             font-size: 11px;
             color: #4a5568;
-            font-weight: 500;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        /* Close Button */
-        .close-btn {
-            background: rgba(0, 0, 0, 0.08);
-            color: #4a5568;
-            padding: 10px 16px;
-            border-radius: 50px;
-            border: none;
-            font-size: 12px;
+            margin-bottom: 20px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            width: 100%;
-            margin-top: 8px;
-            animation: fadeInUp 0.4s ease 0.4s both;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 12px;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .close-btn:hover {
-            background: rgba(0, 0, 0, 0.15);
-            transform: scale(0.98);
-        }
-
-        .close-btn:active {
-            transform: scale(0.96);
-        }
-
-        /* WhatsApp Button */
-        .whatsapp {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            padding: 10px 16px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 700;
-            transition: all 0.25s ease;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            margin-bottom: 8px;
-            animation: btnGlow 2s ease infinite 0.4s both;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-        }
-
-        @keyframes btnGlow {
-            0%, 100% {
-                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-            }
-            50% {
-                box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
-            }
-        }
-
-        .whatsapp:hover {
-            transform: scale(0.98);
-            gap: 10px;
-        }
-
-        .whatsapp:active {
-            transform: scale(0.96);
-        }
-
-        .whatsapp svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Exit Animation */
-        .dialog-exit {
-            animation: floatOut 0.25s ease forwards !important;
-        }
-
-        @keyframes floatOut {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0.85) translateY(15px);
-            }
+        .close-btn { 
+            background: #C5CAE8; 
+            color: #1a202c; 
+            padding: 12px; 
+            border-radius: 16px; 
+            border: none; 
+            font-size: 13px; 
+            font-weight: 800; 
+            width: 100%; 
+            cursor: pointer; 
         }
     </style>
 </head>
 <body>
     <div class="dialog" id="dialog">
-        <!-- Close Button (X) -->
-        <button class="close-popup" onclick="closePopup()">✕</button>
-
-        <!-- App Name -->
-        <div class="app-name">📚 JKBose Helper</div>
-        <div class="tagline">Your Complete Study Companion</div>
-
-        <!-- Resources Grid -->
-        <div class="resources">
-            <div class="resource-item" onclick="openFeature('notes')">
-                <span class="resource-emoji">📝</span>
-                <div class="resource-name">Notes</div>
-            </div>
-            <div class="resource-item hot" onclick="openFeature('pyqs')">
-                <span class="resource-emoji">📄</span>
-                <div class="resource-name">PYQs</div>
-            </div>
-            <div class="resource-item" onclick="openFeature('guess')">
-                <span class="resource-emoji">🎯</span>
-                <div class="resource-name">Guess</div>
-            </div>
-            <div class="resource-item" onclick="openFeature('important')">
-                <span class="resource-emoji">⭐</span>
-                <div class="resource-name">Important</div>
-            </div>
-            <div class="resource-item" onclick="openFeature('books')">
-                <span class="resource-emoji">📖</span>
-                <div class="resource-name">Books</div>
-            </div>
-            <div class="resource-item" onclick="openFeature('syllabus')">
-                <span class="resource-emoji">📋</span>
-                <div class="resource-name">Syllabus</div>
-            </div>
+        <div class="app-name">📚 JKBose Daily Inspiration</div>
+        
+        <div class="quote-box">
+            <div class="quote-text" id="quote">"Loading..."</div>
         </div>
 
-        <!-- WhatsApp Button -->
-        <button class="whatsapp" onclick="joinWhatsApp()">
-            <svg viewBox="0 0 24 24" fill="white">
-                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 6.46 17.5 2 12.04 2Z"/>
-            </svg>
-            Join WhatsApp Community
-        </button>
-
-        <!-- Don't Show Again Checkbox -->
-        <div class="checkbox-wrapper">
-            <input type="checkbox" id="dontShow">
-            <label for="dontShow">Don't show again</label>
+        <div class="support-msg">
+            🚀 Love using JKBose Helper? Help us grow by sharing this app with your classmates!
         </div>
 
-        <!-- Close Button -->
         <button class="close-btn" onclick="handleClose()">Close</button>
     </div>
 
     <script>
-        function closePopup() {
-            const dialog = document.getElementById('dialog');
-            dialog.classList.add('dialog-exit');
-            setTimeout(() => {
-                dialog.style.display = 'none';
-            }, 250);
-        }
+        const quotes = [
+            "Success is the sum of small efforts, repeated day in and day out.", "Believe you can and you're halfway there.", "Your limitation—it's only your imagination.", "Push yourself, because no one else is going to do it for you.", "Don't stop when you're tired. Stop when you're done.",
+            "Education is the most powerful weapon which you can use to change the world.", "The future depends on what you do today.", "It always seems impossible until it's done.", "Strive for progress, not perfection.", "Opportunities don't happen, you create them.",
+            "Don't watch the clock; do what it does. Keep going.", "Keep your face always toward the sunshine—and shadows will fall behind you.", "It does not matter how slowly you go as long as you do not stop.", "Everything you’ve ever wanted is on the other side of fear.", "Success usually comes to those who are too busy to be looking for it.",
+            "Hard work beats talent when talent doesn't work hard.", "The secret of getting ahead is getting started.", "Dream big and dare to fail.", "The only way to do great work is to love what you do.", "Focus on being productive instead of busy.",
+            "If you look at what you have in life, you'll always have more.", "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.", "Life is what happens when you're making other plans.", "Spread love everywhere you go.", "Always remember that you are absolutely unique. Just like everyone else.",
+            "Don't judge each day by the harvest you reap but by the seeds that you plant.", "The best way to predict your future is to invent it.", "Life is really simple, but we insist on making it complicated.", "May you live all the days of your life.", "You can face anything when you're prepared.",
+            "Whatever you can do, or dream you can, begin it.", "The only limit to our realization of tomorrow is our doubts of today.", "Act as if what you do makes a difference. It does.", "Believe in yourself and all that you are.", "Turn your wounds into wisdom.",
+            "The way to get started is to quit talking and begin doing.", "Your time is limited, so don't waste it living someone else's life.", "If life were predictable it would cease to be life, and be without flavor.", "If you look at what you have in life, you'll always have more.", "Life is what happens when you're making other plans.",
+            "Spread love everywhere you go.", "Always remember that you are absolutely unique.", "Don't judge each day by the harvest you reap.", "The best way to predict your future is to invent it.", "Life is really simple, but we insist on making it complicated.",
+            "May you live all the days of your life.", "Life itself is the most wonderful fairy tale.", "Do not let what you cannot do interfere with what you can do.", "Whatever you do, do it with all your might.", "Challenges are what make life interesting.",
+            "Happiness is not something ready made. It comes from your own actions.", "The only way to find true happiness is to risk being completely cut open.", "Life is a series of natural and spontaneous changes.", "Get busy living or get busy dying.", "You only live once, but if you do it right, once is enough.",
+            "In the middle of every difficulty lies opportunity.", "Start where you are. Use what you have. Do what you can.", "Dreams don't work unless you do.", "Go the extra mile. It's never crowded there.", "Mistakes are proof that you are trying.",
+            "Quality is not an act, it is a habit.", "Change your thoughts and you change your world.", "Keep your eyes on the stars, and your feet on the ground.", "Nothing is impossible, the word itself says 'I'm possible'!", "The only person you are destined to become is the person you decide to be.",
+            "Believe you can and you're halfway there.", "Act as if what you do makes a difference.", "Success is not final, failure is not fatal.", "Your life is your story, and the adventure ahead of you is the journey.", "Never let the fear of striking out keep you from playing the game.",
+            "The best and most beautiful things in the world cannot be seen.", "You are braver than you believe, stronger than you seem.", "A journey of a thousand miles begins with a single step.", "No act of kindness, no matter how small, is ever wasted.", "You must be the change you wish to see in the world.",
+            "Life is like a bicycle. To keep your balance, you must keep moving.", "If you want to live a happy life, tie it to a goal.", "Only I can change my life. No one can do it for me.", "Do what you can, with what you have, where you are.", "Life is 10% what happens to us and 90% how we react to it.",
+            "Everything has beauty, but not everyone sees it.", "It is during our darkest moments that we must focus to see the light.", "Do not wait; the time will never be 'just right'.", "Whether you think you can or you think you can't, you're right.", "The only source of knowledge is experience.",
+            "Life is a gift, and it offers us the privilege of growth.", "Character cannot be developed in ease and quiet.", "Be yourself; everyone else is already taken.", "The purpose of our lives is to be happy.", "Life is short and it is up to you to make it sweet.",
+            "To be yourself in a world that is constantly trying to make you something else.", "There is no substitute for hard work.", "Patience, persistence and perspiration make an unbeatable combination.", "Success is liking yourself, liking what you do.", "The secret of success is to do the common thing uncommonly well."
+        ];
 
-        function handleClose() {
-            const dialog = document.getElementById('dialog');
-            const dontShow = document.getElementById('dontShow');
-            
-            // If checkbox is checked, save to localStorage
-            if (dontShow && dontShow.checked) {
-                localStorage.setItem('dontShowDialog', 'true');
-                // Notify Android if available
-                if (window.Android && window.Android.dontShowAgain) {
-                    window.Android.dontShowAgain();
-                }
-            }
-            
-            dialog.classList.add('dialog-exit');
-            setTimeout(() => {
-                dialog.style.display = 'none';
-            }, 250);
-        }
-
-        function openFeature(feature) {
-            // Add haptic feedback animation
-            const clickedItem = event.currentTarget;
-            clickedItem.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                clickedItem.style.transform = '';
-            }, 150);
-            
-            if (window.Android && window.Android.openFeature) {
-                window.Android.openFeature(feature);
-            }
-        }
-
-        function joinWhatsApp() {
-            const btn = document.querySelector('.whatsapp');
-            btn.style.transform = 'scale(0.96)';
-            setTimeout(() => {
-                btn.style.transform = '';
-            }, 150);
-            
-            const whatsappUrl = 'https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817';
-            
-            if (window.Android && window.Android.openUrl) {
-                window.Android.openUrl(whatsappUrl);
-            } else {
-                window.open(whatsappUrl, '_blank');
-            }
-        }
-
-        // Check if dialog should be shown
-        if (localStorage.getItem('dontShowDialog') === 'true') {
-            document.getElementById('dialog').style.display = 'none';
-        }
+        document.getElementById('quote').innerText = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`;
+        function handleClose() { document.getElementById('dialog').style.display = 'none'; }
     </script>
 </body>
 </html>
