@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>JKBose Helper</title>
+    <title>JKBose Updates</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&display=swap');
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -13,7 +15,7 @@
             justify-content: center;
             align-items: center;
             background: transparent;
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             padding: 16px;
         }
 
@@ -21,57 +23,78 @@
             max-width: 300px;
             width: 100%;
             background: #ffffff;
-            border-radius: 32px;
+            border-radius: 36px;
             padding: 24px;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            border: 2px solid #C5CAE8;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+            border: 3px solid #C5CAE8;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .teddy-bear {
+            width: 80px;
+            height: 80px;
+            margin: -40px auto 10px;
+            display: block;
         }
 
         .app-name { 
-            text-align: center; 
-            font-size: 18px; 
+            font-size: 20px; 
             font-weight: 800; 
             color: #1a202c; 
-            margin-bottom: 20px; 
-            padding-bottom: 10px;
-            border-bottom: 2px solid #C5CAE8;
+            margin-bottom: 16px; 
         }
 
-        .quote-box {
+        .update-box {
             background: #C5CAE8;
-            padding: 20px;
+            padding: 16px;
             border-radius: 20px;
             margin-bottom: 20px;
-            text-align: center;
         }
-        .quote-text { 
-            font-size: 14px; 
-            font-style: italic; 
+
+        .update-text { 
+            font-size: 13px; 
             color: #2d3748; 
             line-height: 1.6; 
-            font-weight: 700; 
+            font-weight: 800; 
         }
 
-        .support-msg {
-            text-align: center;
-            font-size: 11px;
-            color: #4a5568;
-            margin-bottom: 20px;
-            font-weight: 600;
-            padding: 10px;
-            background: #f8fafc;
-            border-radius: 12px;
+        .action-btn { 
+            background: #25D366; 
+            color: white; 
+            padding: 12px; 
+            border-radius: 18px; 
+            border: none; 
+            font-size: 14px; 
+            font-weight: 800; 
+            width: 100%; 
+            cursor: pointer; 
+            margin-bottom: 12px;
+            animation: pulse 2s infinite;
         }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .checkbox-wrapper { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
+        .checkbox-wrapper label { font-size: 10px; color: #64748b; font-weight: 700; cursor: pointer; }
 
         .close-btn { 
-            background: #C5CAE8; 
-            color: #1a202c; 
-            padding: 12px; 
-            border-radius: 16px; 
+            background: transparent; 
+            color: #94a3b8; 
+            padding: 8px; 
             border: none; 
-            font-size: 13px; 
-            font-weight: 800; 
+            font-size: 12px; 
+            font-weight: 700; 
             width: 100%; 
             cursor: pointer; 
         }
@@ -79,44 +102,43 @@
 </head>
 <body>
     <div class="dialog" id="dialog">
-        <div class="app-name">📚Daily Inspiration</div>
+        <!-- Animated Teddy Bear -->
+        <img src="https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif" alt="Teddy Bear" class="teddy-bear">
         
-        <div class="quote-box">
-            <div class="quote-text" id="quote">"Loading..."</div>
+        <div class="update-box">
+            <div class="update-text">
+                ✨ 12th English Guess<br>
+                ✨ 10th Science Guess<br>
+                ✨ 11th Guess Paper<br>
+                Available now on WhatsApp!
+            </div>
         </div>
 
-        <div class="support-msg">
-            🚀 Love using JKBose Helper? Help us grow by sharing this app with your classmates!
+        <button class="action-btn" onclick="joinWhatsApp()">Join WhatsApp Now</button>
+        
+        <div class="checkbox-wrapper">
+            <input type="checkbox" id="dontShow">
+            <label for="dontShow">Don't show again</label>
         </div>
 
-        <button class="close-btn" onclick="handleClose()">Close</button>
+        <button class="close-btn" onclick="handleClose()">Dismiss</button>
     </div>
 
     <script>
-        const quotes = [
-            "Success is the sum of small efforts, repeated day in and day out.", "Believe you can and you're halfway there.", "Your limitation—it's only your imagination.", "Push yourself, because no one else is going to do it for you.", "Don't stop when you're tired. Stop when you're done.",
-            "Education is the most powerful weapon which you can use to change the world.", "The future depends on what you do today.", "It always seems impossible until it's done.", "Strive for progress, not perfection.", "Opportunities don't happen, you create them.",
-            "Don't watch the clock; do what it does. Keep going.", "Keep your face always toward the sunshine—and shadows will fall behind you.", "It does not matter how slowly you go as long as you do not stop.", "Everything you’ve ever wanted is on the other side of fear.", "Success usually comes to those who are too busy to be looking for it.",
-            "Hard work beats talent when talent doesn't work hard.", "The secret of getting ahead is getting started.", "Dream big and dare to fail.", "The only way to do great work is to love what you do.", "Focus on being productive instead of busy.",
-            "If you look at what you have in life, you'll always have more.", "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.", "Life is what happens when you're making other plans.", "Spread love everywhere you go.", "Always remember that you are absolutely unique. Just like everyone else.",
-            "Don't judge each day by the harvest you reap but by the seeds that you plant.", "The best way to predict your future is to invent it.", "Life is really simple, but we insist on making it complicated.", "May you live all the days of your life.", "You can face anything when you're prepared.",
-            "Whatever you can do, or dream you can, begin it.", "The only limit to our realization of tomorrow is our doubts of today.", "Act as if what you do makes a difference. It does.", "Believe in yourself and all that you are.", "Turn your wounds into wisdom.",
-            "The way to get started is to quit talking and begin doing.", "Your time is limited, so don't waste it living someone else's life.", "If life were predictable it would cease to be life, and be without flavor.", "If you look at what you have in life, you'll always have more.", "Life is what happens when you're making other plans.",
-            "Spread love everywhere you go.", "Always remember that you are absolutely unique.", "Don't judge each day by the harvest you reap.", "The best way to predict your future is to invent it.", "Life is really simple, but we insist on making it complicated.",
-            "May you live all the days of your life.", "Life itself is the most wonderful fairy tale.", "Do not let what you cannot do interfere with what you can do.", "Whatever you do, do it with all your might.", "Challenges are what make life interesting.",
-            "Happiness is not something ready made. It comes from your own actions.", "The only way to find true happiness is to risk being completely cut open.", "Life is a series of natural and spontaneous changes.", "Get busy living or get busy dying.", "You only live once, but if you do it right, once is enough.",
-            "In the middle of every difficulty lies opportunity.", "Start where you are. Use what you have. Do what you can.", "Dreams don't work unless you do.", "Go the extra mile. It's never crowded there.", "Mistakes are proof that you are trying.",
-            "Quality is not an act, it is a habit.", "Change your thoughts and you change your world.", "Keep your eyes on the stars, and your feet on the ground.", "Nothing is impossible, the word itself says 'I'm possible'!", "The only person you are destined to become is the person you decide to be.",
-            "Believe you can and you're halfway there.", "Act as if what you do makes a difference.", "Success is not final, failure is not fatal.", "Your life is your story, and the adventure ahead of you is the journey.", "Never let the fear of striking out keep you from playing the game.",
-            "The best and most beautiful things in the world cannot be seen.", "You are braver than you believe, stronger than you seem.", "A journey of a thousand miles begins with a single step.", "No act of kindness, no matter how small, is ever wasted.", "You must be the change you wish to see in the world.",
-            "Life is like a bicycle. To keep your balance, you must keep moving.", "If you want to live a happy life, tie it to a goal.", "Only I can change my life. No one can do it for me.", "Do what you can, with what you have, where you are.", "Life is 10% what happens to us and 90% how we react to it.",
-            "Everything has beauty, but not everyone sees it.", "It is during our darkest moments that we must focus to see the light.", "Do not wait; the time will never be 'just right'.", "Whether you think you can or you think you can't, you're right.", "The only source of knowledge is experience.",
-            "Life is a gift, and it offers us the privilege of growth.", "Character cannot be developed in ease and quiet.", "Be yourself; everyone else is already taken.", "The purpose of our lives is to be happy.", "Life is short and it is up to you to make it sweet.",
-            "To be yourself in a world that is constantly trying to make you something else.", "There is no substitute for hard work.", "Patience, persistence and perspiration make an unbeatable combination.", "Success is liking yourself, liking what you do.", "The secret of success is to do the common thing uncommonly well."
-        ];
+        function handleClose() { 
+            if (document.getElementById('dontShow').checked) {
+                localStorage.setItem('dontShowDialog', 'true');
+            }
+            document.getElementById('dialog').style.display = 'none'; 
+        }
+        
+        function joinWhatsApp() { 
+            window.open('https://chat.whatsapp.com/Gvx7OvnZMAILbiYdAwM1wg', '_blank'); 
+        }
 
-        document.getElementById('quote').innerText = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`;
-        function handleClose() { document.getElementById('dialog').style.display = 'none'; }
+        if (localStorage.getItem('dontShowDialog') === 'true') {
+            document.getElementById('dialog').style.display = 'none';
+        }
     </script>
 </body>
 </html>
