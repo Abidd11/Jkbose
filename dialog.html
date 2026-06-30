@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>JKBose Updates</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -17,107 +17,199 @@
             background: transparent;
             font-family: 'Plus Jakarta Sans', sans-serif;
             padding: 16px;
+            overflow: hidden;
         }
 
+        /* Upgraded Glassmorphic Dialog Panel */
         .dialog {
-            max-width: 300px;
+            max-width: 310px;
             width: 100%;
             background: #ffffff;
-            border-radius: 36px;
+            border-radius: 32px;
             padding: 24px;
             position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+            box-shadow: 0 25px 60px -15px rgba(100, 110, 160, 0.35);
             border: 3px solid #C5CAE8;
-            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
+            transform-origin: center;
+            animation: springIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transition: all 0.3s ease;
         }
 
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes springIn {
+            0% { transform: scale(0.6) translateY(40px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        /* Smooth Exit Animation */
+        .dialog.exit-animation {
+            animation: bounceOut 0.35s cubic-bezier(0.36, -0.07, 0.57, -0.2) forwards;
+        }
+
+        @keyframes bounceOut {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.75) translateY(20px); opacity: 0; }
+        }
+
+        /* Fixed Image Container to prevent structural layout shifting */
+        .avatar-container {
+            width: 84px;
+            height: 84px;
+            margin: -48px auto 14px;
+            position: relative;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 2px;
+            box-shadow: 0 10px 20px -5px rgba(100, 110, 160, 0.2);
+            border: 3px solid #C5CAE8;
         }
 
         .teddy-bear {
-            width: 80px;
-            height: 80px;
-            margin: -40px auto 10px;
-            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
         }
 
-        .app-name { 
-            font-size: 20px; 
-            font-weight: 800; 
-            color: #1a202c; 
-            margin-bottom: 16px; 
-        }
-
+        /* Improved Information Hub Box with Subtle Gradient & Left Accent Accent */
         .update-box {
-            background: #C5CAE8;
-            padding: 16px;
-            border-radius: 20px;
-            margin-bottom: 20px;
+            background: linear-gradient(145deg, #F0F2FA 0%, #C5CAE8 150%);
+            padding: 18px 16px;
+            border-radius: 24px;
+            margin-bottom: 22px;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9), 0 4px 12px rgba(197, 202, 232, 0.25);
+            border-left: 5px solid #8B94D6;
         }
 
-        .update-text { 
-            font-size: 13px; 
+        /* Clean List UI with optimized spacing */
+        .update-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        .update-item {
+            font-size: 13.5px; 
             color: #2d3748; 
-            line-height: 1.6; 
-            font-weight: 800; 
+            line-height: 1.8; 
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
+        .update-item span {
+            font-size: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* Modernized Interactive Conversion CTA Button */
         .action-btn { 
-            background: #25D366; 
+            background: linear-gradient(135deg, #25D366 0%, #1EBEA5 100%);
             color: white; 
-            padding: 12px; 
-            border-radius: 18px; 
+            padding: 14px 20px; 
+            border-radius: 20px; 
             border: none; 
             font-size: 14px; 
             font-weight: 800; 
             width: 100%; 
             cursor: pointer; 
-            margin-bottom: 12px;
-            animation: pulse 2s infinite;
+            margin-bottom: 16px;
+            letter-spacing: 0.2px;
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.45);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -4px rgba(37, 211, 102, 0.55);
         }
 
-        .checkbox-wrapper { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
-        .checkbox-wrapper label { font-size: 10px; color: #64748b; font-weight: 700; cursor: pointer; }
+        .action-btn:active { 
+            transform: translateY(1px);
+            box-shadow: 0 6px 15px -4px rgba(37, 211, 102, 0.4);
+        }
 
+        /* Perfectly Centered Interactive Checkbox Component */
+        .checkbox-wrapper { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+            margin-bottom: 16px;
+            cursor: pointer;
+            padding: 4px 12px;
+            border-radius: 12px;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .checkbox-wrapper:hover {
+            background: #F4F5FA;
+        }
+
+        .checkbox-wrapper input { 
+            width: 16px; 
+            height: 16px; 
+            cursor: pointer; 
+            accent-color: #25D366; 
+            border: 2px solid #A0AEC0;
+            border-radius: 4px;
+        }
+
+        .checkbox-wrapper label { 
+            font-size: 11px; 
+            color: #718096; 
+            font-weight: 700; 
+            cursor: pointer; 
+        }
+
+        /* Minimalistic Secondary Dismiss Trigger Link */
         .close-btn { 
             background: transparent; 
-            color: #94a3b8; 
-            padding: 8px; 
+            color: #A0AEC0; 
+            padding: 6px; 
             border: none; 
             font-size: 12px; 
             font-weight: 700; 
-            width: 100%; 
+            width: max-content;
+            margin: 0 auto;
             cursor: pointer; 
+            display: block;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .close-btn:hover {
+            color: #718096;
         }
     </style>
 </head>
 <body>
     <div class="dialog" id="dialog">
-        <!-- Animated Teddy Bear -->
-        <img src="https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif" alt="Teddy Bear" class="teddy-bear">
+        <!-- Floating Avatar Wrap -->
+        <div class="avatar-container">
+            <img src="https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif" alt="Teddy Bear" class="teddy-bear">
+        </div>
         
+        <!-- UI optimized Layout Content Grid -->
         <div class="update-box">
-            <div class="update-text">
-                ✨ 12th English Guess<br>
-                ✨ 10th Science Guess<br>
-                ✨ 11th Guess Paper<br>
-                Available now on WhatsApp!
-            </div>
+            <ul class="update-list">
+                <li class="update-item"><span>📚</span> All Class Guess Papers</li>
+                <li class="update-item"><span>📰</span> Educational News</li>
+                <li class="update-item"><span>🚀</span> Fast Academic Updates</li>
+            </ul>
         </div>
 
+        <!-- CTA conversion layer -->
         <button class="action-btn" onclick="joinWhatsApp()">Join WhatsApp Now</button>
         
-        <div class="checkbox-wrapper">
-            <input type="checkbox" id="dontShow">
+        <!-- Safe Interactive Controls Area -->
+        <div class="checkbox-wrapper" onclick="toggleCheckbox(event)">
+            <input type="checkbox" id="dontShow" onclick="event.stopPropagation();">
             <label for="dontShow">Don't show again</label>
         </div>
 
@@ -125,17 +217,29 @@
     </div>
 
     <script>
+        function toggleCheckbox(e) {
+            const checkbox = document.getElementById('dontShow');
+            checkbox.checked = !checkbox.checked;
+        }
+
         function handleClose() { 
+            const dialog = document.getElementById('dialog');
             if (document.getElementById('dontShow').checked) {
                 localStorage.setItem('dontShowDialog', 'true');
             }
-            document.getElementById('dialog').style.display = 'none'; 
+            
+            // Fire layout exit animation before destruction safely
+            dialog.classList.add('exit-animation');
+            setTimeout(() => {
+                dialog.style.display = 'none';
+            }, 320);
         }
         
         function joinWhatsApp() { 
             window.open('https://chat.whatsapp.com/Gvx7OvnZMAILbiYdAwM1wg', '_blank'); 
         }
 
+        // Handle initial rendering configurations
         if (localStorage.getItem('dontShowDialog') === 'true') {
             document.getElementById('dialog').style.display = 'none';
         }
