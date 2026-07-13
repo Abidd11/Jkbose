@@ -1,13 +1,13 @@
 {
   "Visibility": "VISIBLE",
-  "Title": "New Update v9.8",
-  "Description": "Study Meterials Not Showing Fixed ✅ 
+  "Title": "New Update v9.9",
+  "Description": "Fix Crash Problem When App Open ✅ 
 Fix Some Home Bugs✅
 Fix Bugs ✅",
   "MainTextButton": "Update",
   "LogoLink": "https://i.ibb.co/QjmQ9PFz/1753091755114.png",
   "Cancelable": "true",
   "CancelButtonText": "Cancel",
-  "DownloadLink": "https://github.com/Abidd11/Jkbose/releases/download/jkbosehelperv9.8/JKBose.Helper.v9.8.apk",
-  "Version": "9.8"
+  "DownloadLink": "https://github.com/Abidd11/Jkbose/releases/download/jkbosehelperv9.9/JKBose.Helper.v9.9.apk",
+  "Version": "9.9"
 }
