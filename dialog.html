@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>JKBose Updates</title>
+    <title>JKBose App Survey</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
         
@@ -20,17 +20,16 @@
             overflow: hidden;
         }
 
-        /* Premium Glassmorphic Dialog Panel */
+        /* Modern Modern Minimalist Dialog Framework */
         .dialog {
             max-width: 310px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 32px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 28px;
             padding: 24px;
             position: relative;
-            box-shadow: 0 25px 60px -15px rgba(100, 110, 160, 0.35);
-            border: 3px solid #C5CAE8;
+            box-shadow: 0 20px 50px -12px rgba(79, 70, 229, 0.2);
+            border: 2px solid #E2E8F0;
             text-align: center;
             transform-origin: center;
             animation: springIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -51,105 +50,78 @@
             100% { transform: scale(0.75) translateY(20px); opacity: 0; }
         }
 
-        /* Continuous playful floating animation */
+        /* Unique Floating Mascot Wrap Layout */
         .avatar-container {
-            width: 84px;
-            height: 84px;
-            margin: -48px auto 10px;
+            width: 80px;
+            height: 80px;
+            margin: -44px auto 14px;
             position: relative;
             background: #ffffff;
-            border-radius: 50%;
-            padding: 2px;
-            box-shadow: 0 10px 20px -5px rgba(100, 110, 160, 0.2);
-            border: 3px solid #C5CAE8;
-            animation: teddyFloat 3s ease-in-out infinite;
+            border-radius: 24px;
+            padding: 6px;
+            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.1);
+            border: 2px solid #E2E8F0;
+            transform: rotate(-4deg);
+            animation: teddyFloat 4s ease-in-out infinite;
         }
 
         @keyframes teddyFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-6px) rotate(4deg); }
         }
 
         .teddy-bear {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 50%;
         }
 
-        .student-greeting {
+        .survey-badge {
             font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #6366f1;
-            margin-bottom: 14px;
+            letter-spacing: 1px;
+            color: #4f46e5;
+            margin-bottom: 12px;
             display: inline-block;
             background: #EEF2FF;
-            padding: 4px 12px;
+            padding: 5px 14px;
+            border-radius: 12px;
+        }
+
+        /* Fresh Content Accent Box Framework */
+        .info-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 16px;
             border-radius: 20px;
-        }
-
-        /* Beautiful Information Box */
-        .update-box {
-            background: linear-gradient(145deg, #F0F2FA 0%, #C5CAE8 150%);
-            padding: 16px 14px;
-            border-radius: 24px;
-            margin-bottom: 14px;
-            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.9), 0 4px 12px rgba(197, 202, 232, 0.25);
-            border-left: 5px solid #8B94D6;
-        }
-
-        .update-list {
-            list-style: none;
-            text-align: left;
-            display: inline-block;
-            margin: 0 auto;
-        }
-
-        .update-item {
-            font-size: 13.5px; 
-            color: #2d3748; 
-            line-height: 1.8; 
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .update-item span {
-            font-size: 15px;
-        }
-
-        /* Dynamic Micro Tip Card */
-        .tip-card {
-            font-size: 11px;
-            font-weight: 600;
-            color: #4b5563;
-            background: #f9fafb;
-            border: 1px dashed #d1d5db;
-            padding: 10px 12px;
-            border-radius: 16px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             text-align: left;
         }
-        
-        .tip-title {
+
+        .info-title {
+            font-size: 14px;
             font-weight: 800;
-            color: #1f2937;
-            font-size: 11.5px;
-            margin-bottom: 2px;
+            color: #1e293b;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
 
-        /* Modernized Interactive Conversion CTA Button */
+        .info-desc {
+            font-size: 12.5px;
+            color: #64748b;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        /* Sleek Button Interactions */
         .action-btn { 
-            background: linear-gradient(135deg, #25D366 0%, #1EBEA5 100%);
+            background: #1e293b;
             color: white; 
             padding: 14px 20px; 
-            border-radius: 20px; 
+            border-radius: 16px; 
             border: none; 
             font-size: 14px; 
             font-weight: 800; 
@@ -157,21 +129,21 @@
             cursor: pointer; 
             margin-bottom: 14px;
             letter-spacing: 0.2px;
-            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.45);
-            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 20px -4px rgba(30, 41, 59, 0.3);
+            transition: all 0.2s ease;
         }
 
         .action-btn:hover {
+            background: #0f172a;
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px -4px rgba(37, 211, 102, 0.55);
+            box-shadow: 0 12px 24px -4px rgba(30, 41, 59, 0.4);
         }
 
         .action-btn:active { 
             transform: translateY(1px);
-            box-shadow: 0 6px 15px -4px rgba(37, 211, 102, 0.4);
         }
 
-        /* Centered Interactive Checkbox Component */
+        /* Centered Custom Checkbox Interface */
         .checkbox-wrapper { 
             display: inline-flex; 
             align-items: center; 
@@ -180,32 +152,32 @@
             margin-bottom: 14px;
             cursor: pointer;
             padding: 4px 12px;
-            border-radius: 12px;
+            border-radius: 10px;
             transition: background 0.2s;
             user-select: none;
         }
 
-        .checkbox-wrapper:hover { background: #F4F5FA; }
+        .checkbox-wrapper:hover { background: #F1F5F9; }
 
         .checkbox-wrapper input { 
-            width: 16px; 
-            height: 16px; 
+            width: 15px; 
+            height: 15px; 
             cursor: pointer; 
-            accent-color: #25D366; 
-            border: 2px solid #A0AEC0;
+            accent-color: #1e293b; 
+            border: 2px solid #94a3b8;
             border-radius: 4px;
         }
 
         .checkbox-wrapper label { 
             font-size: 11px; 
-            color: #718096; 
+            color: #64748b; 
             font-weight: 700; 
             cursor: pointer; 
         }
 
         .close-btn { 
             background: transparent; 
-            color: #A0AEC0; 
+            color: #94a3b8; 
             padding: 6px; 
             border: none; 
             font-size: 12px; 
@@ -217,67 +189,36 @@
             transition: color 0.2s;
         }
 
-        .close-btn:hover { color: #718096; }
+        .close-btn:hover { color: #64748b; }
     </style>
 </head>
 <body>
     <div class="dialog" id="dialog">
-        <!-- Floating Avatar Wrap -->
+        <!-- Floating Block Mascot Wrap -->
         <div class="avatar-container">
-            <img src="https://media.tenor.com/63IENW605s0AAAAj/dudu-twisting-dance.gif" alt="Teddy Bear" class="teddy-bear">
+            <img src="https://media1.tenor.com/m/BxibqUT9-I0AAAAd/dudu-flower.gif" alt="Teddy Bear" class="teddy-bear">
         </div>
         
-        <!-- Interactive Student Greeting Header -->
-        <div class="student-greeting" id="greetingText">Hey Student! ✨</div>
+        <!-- Context Header -->
+        <div class="survey-badge">Quick Survey ⚡</div>
         
-        <!-- UI optimized Layout Content Grid -->
-        <div class="update-box">
-            <ul class="update-list">
-                <li class="update-item"><span>📚</span> All Class Guess Papers</li>
-                <li class="update-item"><span>📰</span> Educational News</li>
-                <li class="update-item"><span>🚀</span> Fast Academic Updates</li>
-            </ul>
+        <!-- Layout Content Grid Info Card -->
+        <div class="info-card">
+            <div class="info-title">👋 Help Us Improve!</div>
+            <div class="info-desc">
+                Take a 1-minute survey to share your feedback and help us build better features for you.
+            </div>
         </div>
 
-        <!-- Dynamic Micro Study Tip Box -->
-        <div class="tip-card">
-            <div class="tip-title">⚡ Quick Study Tip:</div>
-            <div id="study-tip">Loading focus fuel...</div>
-        </div>
-
-        <!-- CTA conversion layer -->
-        <button class="action-btn" onclick="joinWhatsApp()">Join WhatsApp Now</button>
+        <!-- CTA Launch Action -->
+        <button class="action-btn" onclick="startSurvey()">Start Survey</button>
         
-        <!-- Safe Interactive Controls Area -->
-        <div class="checkbox-wrapper" onclick="toggleCheckbox(event)">
-            <input type="checkbox" id="dontShow" onclick="event.stopPropagation();">
-            <label for="dontShow">Don't show again</label>
-        </div>
 
-        <button class="close-btn" onclick="handleClose()">Dismiss</button>
+
+        <button class="close-btn" onclick="handleClose()">Skip</button>
     </div>
 
     <script>
-        // Dynamically change greeting message based on time of day
-        function setDynamicGreeting() {
-            const hour = new Date().getHours();
-            const greetingEl = document.getElementById('greetingText');
-            if (hour < 12) greetingEl.innerHTML = "🌅 Good Morning, Achiever!";
-            else if (hour < 17) greetingEl.innerHTML = "☀️ Good Afternoon, Scholar!";
-            else greetingEl.innerHTML = "🌙 Good Evening, Thinker!";
-        }
-        setDynamicGreeting();
-
-        // High-value quick student focus tips
-        const studyTips = [
-            "Try the Pomodoro trick: Study hard for 25 mins, then take a 5-min break!",
-            "Explain what you just read to an imaginary friend to remember it 2x faster.",
-            "Keep a blank sheet nearby to scribble distracting thoughts down.",
-            "Review your hardest formulas right before sleeping—your brain preserves it better!",
-            "Hydrate! Just one glass of water can boost your brain's processing speed."
-        ];
-        document.getElementById('study-tip').innerText = studyTips[Math.floor(Math.random() * studyTips.length)];
-
         function toggleCheckbox(e) {
             const checkbox = document.getElementById('dontShow');
             checkbox.checked = !checkbox.checked;
@@ -286,7 +227,7 @@
         function handleClose() { 
             const dialog = document.getElementById('dialog');
             if (document.getElementById('dontShow').checked) {
-                localStorage.setItem('dontShowDialog', 'true');
+                localStorage.setItem('dontShowSurveyDialog', 'true');
             }
             
             dialog.classList.add('exit-animation');
@@ -295,11 +236,13 @@
             }, 320);
         }
         
-        function joinWhatsApp() { 
-            window.open('https://chat.whatsapp.com/Gvx7OvnZMAILbiYdAwM1wg', '_blank'); 
+        function startSurvey() { 
+            // Replace the URL below with your actual survey link asset
+            window.open('https://form.svhrt.com/6a5ba47f8460ea85043e31e5', '_blank'); 
+            handleClose();
         }
 
-        if (localStorage.getItem('dontShowDialog') === 'true') {
+        if (localStorage.getItem('dontShowSurveyDialog') === 'true') {
             document.getElementById('dialog').style.display = 'none';
         }
     </script>
