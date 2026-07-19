@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>JKBose App Survey</title>
+    <title>JKBose App Testimony</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -20,130 +20,158 @@
             overflow: hidden;
         }
 
-        /* Modern Modern Minimalist Dialog Framework */
+        /* Modern Asymmetric Bubble Design Framework */
         .dialog {
-            max-width: 310px;
+            max-width: 320px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 28px;
-            padding: 24px;
+            background: #ffffff;
+            border-radius: 40px 40px 8px 40px; /* Unique asymmetrical playful framing */
+            padding: 28px 24px 24px 24px;
             position: relative;
-            box-shadow: 0 20px 50px -12px rgba(79, 70, 229, 0.2);
-            border: 2px solid #E2E8F0;
+            box-shadow: 0 30px 70px -10px rgba(22, 101, 52, 0.25);
+            border: 4px solid #25D366;
             text-align: center;
-            transform-origin: center;
-            animation: springIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: bottom left;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.76, 0.64, 1) forwards;
             transition: all 0.3s ease;
         }
 
-        @keyframes springIn {
-            0% { transform: scale(0.6) translateY(40px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
+        @keyframes popIn {
+            0% { transform: scale(0.5) rotate(-8deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
         .dialog.exit-animation {
-            animation: bounceOut 0.35s cubic-bezier(0.36, -0.07, 0.57, -0.2) forwards;
+            animation: popOut 0.3s cubic-bezier(0.36, -0.07, 0.57, -0.2) forwards;
         }
 
-        @keyframes bounceOut {
+        @keyframes popOut {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0.75) translateY(20px); opacity: 0; }
+            100% { transform: scale(0.7) translateY(30px); opacity: 0; }
         }
 
-        /* Unique Floating Mascot Wrap Layout */
+        /* Modern Chat Bubble Avatar Badge Arrangement */
         .avatar-container {
-            width: 80px;
-            height: 80px;
-            margin: -44px auto 14px;
+            width: 86px;
+            height: 86px;
+            margin: -58px auto 14px;
             position: relative;
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 6px;
-            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.1);
-            border: 2px solid #E2E8F0;
-            transform: rotate(-4deg);
-            animation: teddyFloat 4s ease-in-out infinite;
+            background: #25D366;
+            border-radius: 30px; /* Squircle design profile */
+            padding: 4px;
+            box-shadow: 0 12px 24px -6px rgba(37, 211, 102, 0.4);
+            animation: gentleSwing 4s ease-in-out infinite;
         }
 
-        @keyframes teddyFloat {
-            0%, 100% { transform: translateY(0) rotate(-4deg); }
-            50% { transform: translateY(-6px) rotate(4deg); }
+        @keyframes gentleSwing {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-5px) rotate(3deg); }
         }
 
         .teddy-bear {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            background: #ffffff;
+            border-radius: 26px;
         }
 
-        .survey-badge {
-            font-size: 11px;
+        /* Pure Dynamic Glowing Typographic Accent Container */
+        .heart-badge {
+            font-size: 13px;
             font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #4f46e5;
-            margin-bottom: 12px;
-            display: inline-block;
-            background: #EEF2FF;
-            padding: 5px 14px;
-            border-radius: 12px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #25D366 0%, #1EBEA5 100%);
+            padding: 6px 18px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
 
-        /* Fresh Content Accent Box Framework */
-        .info-card {
+        /* Open Borderless Premium Typography Canvas */
+        .testimonial-canvas {
             background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            padding: 16px;
-            border-radius: 20px;
+            border-radius: 28px;
+            padding: 20px 16px;
             margin-bottom: 20px;
-            text-align: left;
+            border: 1px dashed #CBD5E1;
+            position: relative;
         }
 
-        .info-title {
+        .user-meta {
             font-size: 14px;
             font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 6px;
+            color: #0f172a;
+            margin-bottom: 10px;
+            text-align: center;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
         }
 
-        .info-desc {
-            font-size: 12.5px;
-            color: #64748b;
-            line-height: 1.5;
-            font-weight: 600;
+        .user-meta .accent-dot {
+            width: 6px;
+            height: 6px;
+            background: #25D366;
+            border-radius: 50%;
         }
 
-        /* Sleek Button Interactions */
+        .quote-content {
+            font-size: 12.5px;
+            color: #334155;
+            line-height: 1.7;
+            font-weight: 600;
+            max-height: 145px;
+            overflow-y: auto;
+            padding-right: 4px;
+            text-align: left;
+        }
+
+        /* Custom minimal slate track scrollbar */
+        .quote-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .quote-content::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+
+        /* Clean Flat-Styled High Contrast Action Grid */
         .action-btn { 
-            background: #1e293b;
-            color: white; 
-            padding: 14px 20px; 
-            border-radius: 16px; 
+            background: #0f172a;
+            color: #ffffff; 
+            padding: 16px 20px; 
+            border-radius: 20px; 
             border: none; 
             font-size: 14px; 
             font-weight: 800; 
             width: 100%; 
             cursor: pointer; 
-            margin-bottom: 14px;
-            letter-spacing: 0.2px;
-            box-shadow: 0 8px 20px -4px rgba(30, 41, 59, 0.3);
-            transition: all 0.2s ease;
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 10px 25px -6px rgba(15, 23, 42, 0.3);
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .action-btn:hover {
-            background: #0f172a;
+            background: #1e293b;
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px -4px rgba(30, 41, 59, 0.4);
+            box-shadow: 0 14px 28px -4px rgba(15, 23, 42, 0.4);
         }
 
         .action-btn:active { 
             transform: translateY(1px);
         }
 
-        /* Centered Custom Checkbox Interface */
+        /* Systemic Interactive Control Layout */
         .checkbox-wrapper { 
             display: inline-flex; 
             align-items: center; 
@@ -151,8 +179,8 @@
             gap: 8px; 
             margin-bottom: 14px;
             cursor: pointer;
-            padding: 4px 12px;
-            border-radius: 10px;
+            padding: 6px 14px;
+            border-radius: 14px;
             transition: background 0.2s;
             user-select: none;
         }
@@ -160,12 +188,12 @@
         .checkbox-wrapper:hover { background: #F1F5F9; }
 
         .checkbox-wrapper input { 
-            width: 15px; 
-            height: 15px; 
+            width: 16px; 
+            height: 16px; 
             cursor: pointer; 
-            accent-color: #1e293b; 
+            accent-color: #0f172a; 
             border: 2px solid #94a3b8;
-            border-radius: 4px;
+            border-radius: 50%; /* Modern circular checkbox element choice */
         }
 
         .checkbox-wrapper label { 
@@ -178,7 +206,7 @@
         .close-btn { 
             background: transparent; 
             color: #94a3b8; 
-            padding: 6px; 
+            padding: 4px; 
             border: none; 
             font-size: 12px; 
             font-weight: 700; 
@@ -189,33 +217,38 @@
             transition: color 0.2s;
         }
 
-        .close-btn:hover { color: #64748b; }
+        .close-btn:hover { color: #475569; }
     </style>
 </head>
 <body>
     <div class="dialog" id="dialog">
-        <!-- Floating Block Mascot Wrap -->
+        <!-- Modern Squircle Mascot Wrapper -->
         <div class="avatar-container">
-            <img src="https://media1.tenor.com/m/BxibqUT9-I0AAAAd/dudu-flower.gif" alt="Teddy Bear" class="teddy-bear">
+            <img src="https://media.tenor.com/-aW73OVUtyYAAAAi/tkthao219-bubududu.gif" alt="Teddy Bear" class="teddy-bear">
         </div>
         
-        <!-- Context Header -->
-        <div class="survey-badge">Quick Survey ⚡</div>
+        <!-- Modern Dynamic Header Tag -->
+        <div class="heart-badge">Student Message ❤️</div>
         
-        <!-- Layout Content Grid Info Card -->
-        <div class="info-card">
-            <div class="info-title">👋 Help Us Improve!</div>
-            <div class="info-desc">
-                Take a 1-minute survey to share your feedback and help us build better features for you.
+        <!-- Premium Minimal Testimonial Area -->
+        <div class="testimonial-canvas">
+            <div class="user-meta">
+                <span class="accent-dot"></span>
+                Irshad Shafi
+                <span class="accent-dot"></span>
+            </div>
+            <div class="quote-content">
+                Asalamu Alaikum. Honestly, words are not enough to express my gratitude. You don't even need feedback because the work you do for us students is truly incredible. I sincerely thank you from the bottom of my heart for all your hard work and dedication. May Allah always keep you happy, healthy,safe,and blessed with success. You are an amazing person, and the positive impact you make on student's lives is truly priceless. May Allah reward you abundantly for all the good you do . Ameen 🤲❤️💕🫂💟🫀🙌🙌❤️🤲
             </div>
         </div>
 
-        <!-- CTA Launch Action -->
-        <button class="action-btn" onclick="startSurvey()">Start Survey</button>
+        <!-- High Contrast WhatsApp Action CTA -->
+        <button class="action-btn" onclick="joinChannel()">
+            <span>💬</span> Join WhatsApp Channel
+        </button>
         
 
-
-        <button class="close-btn" onclick="handleClose()">Skip</button>
+        <button class="close-btn" onclick="handleClose()">Dismiss</button>
     </div>
 
     <script>
@@ -227,22 +260,21 @@
         function handleClose() { 
             const dialog = document.getElementById('dialog');
             if (document.getElementById('dontShow').checked) {
-                localStorage.setItem('dontShowSurveyDialog', 'true');
+                localStorage.setItem('dontShowAsymmetricDialog', 'true');
             }
             
             dialog.classList.add('exit-animation');
             setTimeout(() => {
                 dialog.style.display = 'none';
-            }, 320);
+            }, 300);
         }
         
-        function startSurvey() { 
-            // Replace the URL below with your actual survey link asset
-            window.open('https://form.svhrt.com/6a5ba47f8460ea85043e31e5', '_blank'); 
+        function joinChannel() { 
+            window.open('https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817', '_blank'); 
             handleClose();
         }
 
-        if (localStorage.getItem('dontShowSurveyDialog') === 'true') {
+        if (localStorage.getItem('dontShowAsymmetricDialog') === 'true') {
             document.getElementById('dialog').style.display = 'none';
         }
     </script>
