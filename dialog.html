@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>JKBose Daily Inspiration</title>
+    <title>JKBose Helper - New App Update</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
         
@@ -20,7 +20,7 @@
             overflow: hidden;
         }
 
-        /* Modern Asymmetric Bubble Container */
+        /* Asymmetric Bubble Design Framework */
         .dialog {
             max-width: 320px;
             width: 100%;
@@ -50,7 +50,7 @@
             100% { transform: scale(0.7) translateY(30px); opacity: 0; }
         }
 
-        /* Floating Mascot Accent Box */
+        /* Mascot Container */
         .avatar-container {
             width: 86px;
             height: 86px;
@@ -78,78 +78,65 @@
 
         /* Header Pill Badge */
         .heart-badge {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
             color: #ffffff;
             background: linear-gradient(135deg, #25D366 0%, #1EBEA5 100%);
-            padding: 6px 18px;
+            padding: 6px 16px;
             border-radius: 30px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             margin-bottom: 16px;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Quote Canvas Box */
-        .quote-canvas {
+        /* Content Card */
+        .notice-canvas {
             background: #F8FAFC;
             border-radius: 24px;
-            padding: 22px 18px;
+            padding: 20px 16px;
             margin-bottom: 20px;
             border: 1px dashed #CBD5E1;
             position: relative;
         }
 
-        .quote-title {
-            font-size: 13px;
+        .notice-title {
+            font-size: 14px;
             font-weight: 800;
             color: #0f172a;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
-            letter-spacing: 0.2px;
         }
 
-        .quote-title .accent-dot {
+        .notice-title .accent-dot {
             width: 6px;
             height: 6px;
             background: #25D366;
             border-radius: 50%;
         }
 
-        .quote-mark {
-            font-size: 22px;
-            line-height: 1;
-            color: #25D366;
-            font-family: Georgia, serif;
-            display: block;
-            margin-bottom: -4px;
-        }
-
-        .quote-content {
-            font-size: 13.5px;
-            color: #1e293b;
-            line-height: 1.65;
-            font-weight: 700;
-            font-style: italic;
-            max-height: 140px;
-            overflow-y: auto;
-            padding: 0 4px;
+        .notice-content {
+            font-size: 12.5px;
+            color: #334155;
+            line-height: 1.6;
+            font-weight: 600;
             text-align: center;
         }
 
-        .quote-content::-webkit-scrollbar {
-            width: 4px;
-        }
-        .quote-content::-webkit-scrollbar-thumb {
-            background: #CBD5E1;
-            border-radius: 10px;
+        .notice-highlight {
+            color: #059669;
+            font-weight: 800;
+            margin-top: 6px;
+            display: block;
         }
 
-        /* High Contrast Primary CTA Button */
+        /* Primary Action Button */
         .action-btn { 
             background: #0f172a;
             color: #ffffff; 
@@ -231,31 +218,33 @@
 </head>
 <body>
     <div class="dialog" id="dialog">
-        <!-- Floating Mascot Wrap -->
+        <!-- Floating Mascot Wrapper -->
         <div class="avatar-container">
             <img src="https://media.tenor.com/-aW73OVUtyYAAAAi/tkthao219-bubududu.gif" alt="Mascot" class="teddy-bear">
         </div>
         
         <!-- Header Pill Badge -->
-        <div class="heart-badge">Daily Inspiration 📚</div>
+        <div class="heart-badge">New App Release 🚀</div>
         
-        <!-- Quote Display Box -->
-        <div class="quote-canvas">
-            <div class="quote-title">
+        <!-- Notice Canvas -->
+        <div class="notice-canvas">
+            <div class="notice-title">
                 <span class="accent-dot"></span>
-                JKBose Helper
+                Welcome to JKBose Helper
                 <span class="accent-dot"></span>
             </div>
-            <span class="quote-mark">“</span>
-            <div class="quote-content" id="quote">Loading quote...</div>
+            <div class="notice-content">
+                Welcome to the brand new app experience! Since this is a fresh version, you might face minor glitches or issues. 
+                <span class="notice-highlight">Please join our WhatsApp channel to report any problems or give suggestions!</span>
+            </div>
         </div>
 
-        <!-- WhatsApp Action CTA -->
+        <!-- WhatsApp Action Button -->
         <button class="action-btn" onclick="joinChannel()">
-            <span>💬</span> Join WhatsApp Channel
+            <span>💬</span> Join & Report Issues
         </button>
         
-        <!-- Circular Don't Show Control -->
+        <!-- Circular Don't Show Option -->
         <div class="checkbox-wrapper" onclick="toggleCheckbox(event)">
             <input type="checkbox" id="dontShow" onclick="event.stopPropagation();">
             <label for="dontShow">Don't show again</label>
@@ -265,114 +254,6 @@
     </div>
 
     <script>
-        const quotes = [
-            "Success is the sum of small efforts, repeated day in and day out.", 
-            "Believe you can and you're halfway there.", 
-            "Your limitation—it's only your imagination.", 
-            "Push yourself, because no one else is going to do it for you.", 
-            "Don't stop when you're tired. Stop when you're done.",
-            "Education is the most powerful weapon which you can use to change the world.", 
-            "The future depends on what you do today.", 
-            "It always seems impossible until it's done.", 
-            "Strive for progress, not perfection.", 
-            "Opportunities don't happen, you create them.",
-            "Don't watch the clock; do what it does. Keep going.", 
-            "Keep your face always toward the sunshine—and shadows will fall behind you.", 
-            "It does not matter how slowly you go as long as you do not stop.", 
-            "Everything you've ever wanted is on the other side of fear.", 
-            "Success usually comes to those who are too busy to be looking for it.",
-            "Hard work beats talent when talent doesn't work hard.", 
-            "The secret of getting ahead is getting started.", 
-            "Dream big and dare to fail.", 
-            "The only way to do great work is to love what you do.", 
-            "Focus on being productive instead of busy.",
-            "If you look at what you have in life, you'll always have more.", 
-            "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.", 
-            "Life is what happens when you're making other plans.", 
-            "Spread love everywhere you go.", 
-            "Always remember that you are absolutely unique. Just like everyone else.",
-            "Don't judge each day by the harvest you reap but by the seeds that you plant.", 
-            "The best way to predict your future is to invent it.", 
-            "Life is really simple, but we insist on making it complicated.", 
-            "May you live all the days of your life.", 
-            "You can face anything when you're prepared.",
-            "Whatever you can do, or dream you can, begin it.", 
-            "The only limit to our realization of tomorrow is our doubts of today.", 
-            "Act as if what you do makes a difference. It does.", 
-            "Believe in yourself and all that you are.", 
-            "Turn your wounds into wisdom.",
-            "The way to get started is to quit talking and begin doing.", 
-            "Your time is limited, so don't waste it living someone else's life.", 
-            "If life were predictable it would cease to be life, and be without flavor.", 
-            "Do not let what you cannot do interfere with what you can do.", 
-            "Whatever you do, do it with all your might.", 
-            "Challenges are what make life interesting.",
-            "Happiness is not something ready made. It comes from your own actions.", 
-            "In the middle of every difficulty lies opportunity.", 
-            "Start where you are. Use what you have. Do what you can.", 
-            "Dreams don't work unless you do.", 
-            "Go the extra mile. It's never crowded there.", 
-            "Mistakes are proof that you are trying.",
-            "Quality is not an act, it is a habit.", 
-            "Change your thoughts and you change your world.", 
-            "Keep your eyes on the stars, and your feet on the ground.", 
-            "Nothing is impossible, the word itself says 'I'm possible'!", 
-            "The only person you are destined to become is the person you decide to be.",
-            "Success is not final, failure is not fatal: it is the courage to continue that counts.", 
-            "Your life is your story, and the adventure ahead of you is the journey.", 
-            "Never let the fear of striking out keep you from playing the game.",
-            "The best and most beautiful things in the world cannot be seen.", 
-            "You are braver than you believe, stronger than you seem.", 
-            "A journey of a thousand miles begins with a single step.", 
-            "No act of kindness, no matter how small, is ever wasted.", 
-            "You must be the change you wish to see in the world.",
-            "Life is like a bicycle. To keep your balance, you must keep moving.", 
-            "If you want to live a happy life, tie it to a goal.", 
-            "Only I can change my life. No one can do it for me.", 
-            "Do what you can, with what you have, where you are.", 
-            "Life is 10% what happens to us and 90% how we react to it.",
-            "Everything has beauty, but not everyone sees it.", 
-            "It is during our darkest moments that we must focus to see the light.", 
-            "Do not wait; the time will never be 'just right'.", 
-            "Whether you think you can or you think you can't, you're right.", 
-            "The only source of knowledge is experience.",
-            "Character cannot be developed in ease and quiet.", 
-            "Be yourself; everyone else is already taken.", 
-            "The purpose of our lives is to be happy.", 
-            "There is no substitute for hard work.", 
-            "Patience, persistence and perspiration make an unbeatable combination.", 
-            "The secret of success is to do the common thing uncommonly well.",
-            "Work hard in silence, let your success be your noise.",
-            "Be so good they can't ignore you.",
-            "Small daily improvements over time lead to stunning results.",
-            "An investment in knowledge pays the best interest.",
-            "Study the past if you would define the future.",
-            "Today a reader, tomorrow a leader.",
-            "You don't have to be great to start, but you have to start to be great.",
-            "The expert in anything was once a beginner.",
-            "Doubt kills more dreams than failure ever will.",
-            "Action is the foundational key to all success.",
-            "A goal is a dream with a deadline.",
-            "There are no shortcuts to any place worth going.",
-            "Courage is resistance to fear, mastery of fear—not absence of fear.",
-            "With the new day comes new strength and new thoughts.",
-            "You miss 100% of the shots you don't take.",
-            "Try not to become a man of success. Rather become a man of value.",
-            "Don't count the days, make the days count.",
-            "The best way to predict the future is to create it.",
-            "Vision without action is merely a dream.",
-            "Great things never come from comfort zones.",
-            "Wake up with determination. Go to bed with satisfaction.",
-            "Little things make big days.",
-            "It's going to be hard, but hard does not mean impossible.",
-            "Don't wait for opportunity. Create it.",
-            "Dream it. Believe it. Build it.",
-            "Quality is a habit, not an act."
-        ];
-
-        // Inject random quote on open
-        document.getElementById('quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
-
         function toggleCheckbox(e) {
             const checkbox = document.getElementById('dontShow');
             checkbox.checked = !checkbox.checked;
@@ -381,7 +262,7 @@
         function handleClose() { 
             const dialog = document.getElementById('dialog');
             if (document.getElementById('dontShow').checked) {
-                localStorage.setItem('dontShowAsymmetricQuoteDialog', 'true');
+                localStorage.setItem('dontShowNewAppNotice', 'true');
             }
             
             dialog.classList.add('exit-animation');
@@ -395,7 +276,7 @@
             handleClose();
         }
 
-        if (localStorage.getItem('dontShowAsymmetricQuoteDialog') === 'true') {
+        if (localStorage.getItem('dontShowNewAppNotice') === 'true') {
             document.getElementById('dialog').style.display = 'none';
         }
     </script>
