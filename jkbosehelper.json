@@ -1,6 +1,6 @@
 {
   "Visibility": "VISIBLE",
-  "Title": "New Update v8.9",
+  "Title": "New Update v9.9",
   "Description": "• 🎨 Completely Redesigned Modern UI ✅ 
 • 📄 Improved Notes & Previous Papers✅
 • 📚 More Study Materials Added ✅",
@@ -9,5 +9,5 @@
   "Cancelable": "true",
   "CancelButtonText": "Cancel",
   "DownloadLink": "https://github.com/Abidd11/Jkbose/releases/download/jkbosehelperv10.0/JKBose.Helper.v10.0.apk",
-  "Version": "8.9"
+  "Version": "9.9"
 }
