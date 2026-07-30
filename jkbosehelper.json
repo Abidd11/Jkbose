@@ -1,13 +1,13 @@
 {
   "Visibility": "VISIBLE",
-  "Title": "New Update v10.0",
-  "Description": "• 🎨 Completely Redesigned Modern UI ✅ 
-• 📄 Improved Notes & Previous Papers✅
-• 📚 More Study Materials Added ✅",
+  "Title": "New Update v10.1",
+  "Description": "• Visual Notes Images Added ✅ 
+• 📄 Performance Improved✅
+• 📚 Fix Bugs And lag ✅",
   "MainTextButton": "Update",
   "LogoLink": "https://i.ibb.co/QjmQ9PFz/1753091755114.png",
   "Cancelable": "true",
   "CancelButtonText": "Cancel",
-  "DownloadLink": "https://github.com/Abidd11/Jkbose/releases/download/jkbosehelperv10.0/JKBose.Helper.v10.0.apk",
-  "Version": "10.0"
+  "DownloadLink": "https://github.com/Abidd11/Jkbose/releases/download/jkbosehelperv10.1/JKBose.Helper.v10.1.apk",
+  "Version": "10.1"
 }
