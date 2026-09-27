@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>JKBose Helper - New App Update</title>
+    <title>JKBose Helper - Educational Quote</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
         
@@ -28,8 +28,8 @@
             border-radius: 40px 40px 8px 40px;
             padding: 28px 24px 20px 24px;
             position: relative;
-            box-shadow: 0 30px 70px -10px rgba(37, 211, 102, 0.25);
-            border: 4px solid #25D366;
+            box-shadow: 0 30px 70px -10px rgba(79, 70, 229, 0.25);
+            border: 4px solid #4F46E5;
             text-align: center;
             transform-origin: bottom left;
             animation: popIn 0.6s cubic-bezier(0.34, 1.76, 0.64, 1) forwards;
@@ -56,10 +56,10 @@
             height: 86px;
             margin: -58px auto 14px;
             position: relative;
-            background: #25D366;
+            background: #4F46E5;
             border-radius: 30px;
             padding: 4px;
-            box-shadow: 0 12px 24px -6px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 12px 24px -6px rgba(79, 70, 229, 0.4);
             animation: gentleSwing 4s ease-in-out infinite;
         }
 
@@ -74,23 +74,6 @@
             object-fit: contain;
             background: #ffffff;
             border-radius: 26px;
-        }
-
-        /* Header Pill Badge */
-        .heart-badge {
-            font-size: 12px;
-            font-weight: 800;
-            color: #ffffff;
-            background: linear-gradient(135deg, #25D366 0%, #1EBEA5 100%);
-            padding: 6px 16px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         /* Content Card */
@@ -117,26 +100,29 @@
         .notice-title .accent-dot {
             width: 6px;
             height: 6px;
-            background: #25D366;
+            background: #4F46E5;
             border-radius: 50%;
         }
 
         .notice-content {
-            font-size: 12.5px;
+            font-size: 13px;
             color: #334155;
             line-height: 1.6;
             font-weight: 600;
             text-align: center;
+            font-style: italic;
         }
 
         .notice-highlight {
-            color: #059669;
+            color: #4F46E5;
             font-weight: 800;
-            margin-top: 6px;
+            margin-top: 8px;
             display: block;
+            font-style: normal;
+            font-size: 12px;
         }
 
-        /* Primary Action Button */
+        /* Primary Action Button (Dismiss) */
         .action-btn { 
             background: #0f172a;
             color: #ffffff; 
@@ -166,54 +152,6 @@
         .action-btn:active { 
             transform: translateY(1px);
         }
-
-        /* Circular Checkbox Controls */
-        .checkbox-wrapper { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 8px; 
-            margin-bottom: 12px;
-            cursor: pointer;
-            padding: 6px 14px;
-            border-radius: 14px;
-            transition: background 0.2s;
-            user-select: none;
-        }
-
-        .checkbox-wrapper:hover { background: #F1F5F9; }
-
-        .checkbox-wrapper input { 
-            width: 16px; 
-            height: 16px; 
-            cursor: pointer; 
-            accent-color: #0f172a; 
-            border: 2px solid #94a3b8;
-            border-radius: 50%;
-        }
-
-        .checkbox-wrapper label { 
-            font-size: 11px; 
-            color: #64748b; 
-            font-weight: 700; 
-            cursor: pointer; 
-        }
-
-        .close-btn { 
-            background: transparent; 
-            color: #94a3b8; 
-            padding: 4px; 
-            border: none; 
-            font-size: 12px; 
-            font-weight: 700; 
-            width: max-content;
-            margin: 0 auto;
-            cursor: pointer; 
-            display: block;
-            transition: color 0.2s;
-        }
-
-        .close-btn:hover { color: #475569; }
     </style>
 </head>
 <body>
@@ -227,55 +165,54 @@
         <div class="notice-canvas">
             <div class="notice-title">
                 <span class="accent-dot"></span>
-                Welcome to JKBose Helper
+                Daily Inspiration
                 <span class="accent-dot"></span>
             </div>
-            <div class="notice-content">
-                Welcome to the brand new app experience! Since this is a fresh version, you might face minor glitches or issues. 
-                <span class="notice-highlight">Please join our WhatsApp channel to report any problems or give suggestions!</span>
+            <div class="notice-content" id="quoteText">
+                "Loading daily wisdom..."
             </div>
+            <span class="notice-highlight" id="quoteAuthor">— Author</span>
         </div>
 
-        <!-- WhatsApp Action Button -->
-        <button class="action-btn" onclick="joinChannel()">
-            <span>💬</span> Join & Report Issues
+        <!-- Primary Action Button -->
+        <button class="action-btn" onclick="handleClose()">
+            <span>✨</span> Got It
         </button>
-        
-        <!-- Circular Don't Show Option -->
-        <div class="checkbox-wrapper" onclick="toggleCheckbox(event)">
-            <input type="checkbox" id="dontShow" onclick="event.stopPropagation();">
-            <label for="dontShow">Don't show again</label>
-        </div>
-
-        <button class="close-btn" onclick="handleClose()">Dismiss</button>
     </div>
 
     <script>
-        function toggleCheckbox(e) {
-            const checkbox = document.getElementById('dontShow');
-            checkbox.checked = !checkbox.checked;
+        const educationalQuotes = [
+            { quote: "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela" },
+            { quote: "The beautiful thing about learning is that no one can take it away from you.", author: "B.B. King" },
+            { quote: "Live as if you were to die tomorrow. Learn as if you were to live forever.", author: "Mahatma Gandhi" },
+            { quote: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+            { quote: "The roots of education are bitter, but the fruit is sweet.", author: "Aristotle" },
+            { quote: "Education is not preparation for life; education is life itself.", author: "John Dewey" },
+            { quote: "Change is the end result of all true learning.", author: "Leo Buscaglia" },
+            { quote: "Tell me and I forget. Teach me and I remember. Involve me and I learn.", author: "Benjamin Franklin" },
+            { quote: "The mind is not a vessel to be filled, but a fire to be kindled.", author: "Plutarch" },
+            { quote: "Learning never exhausts the mind.", author: "Leonardo da Vinci" }
+        ];
+
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * educationalQuotes.length);
+            const selected = educationalQuotes[randomIndex];
+            document.getElementById('quoteText').innerText = `"${selected.quote}"`;
+            document.getElementById('quoteAuthor').innerText = `— ${selected.author}`;
         }
 
         function handleClose() { 
             const dialog = document.getElementById('dialog');
-            if (document.getElementById('dontShow').checked) {
-                localStorage.setItem('dontShowNewAppNotice', 'true');
-            }
-            
             dialog.classList.add('exit-animation');
             setTimeout(() => {
                 dialog.style.display = 'none';
             }, 300);
         }
 
-        function joinChannel() { 
-            window.open('https://whatsapp.com/channel/0029VajKhZ0JENy2l6mBt817', '_blank'); 
-            handleClose();
-        }
-
-        if (localStorage.getItem('dontShowNewAppNotice') === 'true') {
-            document.getElementById('dialog').style.display = 'none';
-        }
+        // Load a quote every time the dialog is opened/loaded
+        window.onload = function() {
+            displayRandomQuote();
+        };
     </script>
 </body>
 </html>
