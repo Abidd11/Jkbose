@@ -1,13 +1,13 @@
 {
   "Visibility": "VISIBLE",
-  "Title": "New Update v15",
-  "Description": "• Add Exam Countdown Added ✅ 
-• 📄 Performance Improved✅
+  "Title": "New Update v15.1",
+  "Description": "• Add Countdown In Home Added ✅ 
+• Ask Ai Added ✅
 • 📚 Fix Bugs And lag ✅",
   "MainTextButton": "Update",
   "LogoLink": "https://i.ibb.co/QjmQ9PFz/1753091755114.png",
   "Cancelable": "false",
   "CancelButtonText": "Cancel",
-  "DownloadLink": "https://github.com/Abidd11/Jkbose/releases/download/jkbosehelperv15/JKBose.Helper.v15.apk",
-  "Version": "15"
+  "DownloadLink": "https://github.com/Abidd11/Jkbose/releases/download/jkbosehelperv15.1/app-release.apk",
+  "Version": "15.1"
 }
