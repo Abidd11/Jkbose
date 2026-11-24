@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JKBose Helper - Student Reviews</title>
+    <title>Student Reviews</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
         
@@ -82,23 +82,12 @@
             border-radius: 24px;
         }
 
-        /* Top Header & Rating Pill */
+        /* Top Rating Pill */
         .top-meta {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             margin-bottom: 10px;
-            padding: 0 4px;
-        }
-
-        .app-tag {
-            font-size: 11px;
-            font-weight: 800;
-            color: #4F46E5;
-            background: #EEF2FF;
-            padding: 5px 10px;
-            border-radius: 999px;
-            letter-spacing: 0.2px;
         }
 
         .stars-pill {
@@ -106,7 +95,7 @@
             font-weight: 800;
             color: #B45309;
             background: #FEF3C7;
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 999px;
         }
 
@@ -129,8 +118,6 @@
         .reviewer-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 8px;
             margin-bottom: 10px;
         }
 
@@ -141,8 +128,8 @@
         }
 
         .reviewer-badge {
-            width: 34px;
-            height: 34px;
+            width: 36px;
+            height: 36px;
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -162,7 +149,7 @@
         }
 
         .reviewer-name {
-            font-size: 13.5px;
+            font-size: 14px;
             font-weight: 800;
             color: #0F172A;
             line-height: 1.2;
@@ -173,17 +160,6 @@
             font-weight: 600;
             color: #64748B;
             margin-top: 2px;
-        }
-
-        .lang-pill {
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            border-radius: 8px;
-            background: #E0E7FF;
-            color: #3730A3;
-            flex-shrink: 0;
         }
 
         .review-text {
@@ -274,7 +250,6 @@
 
         <!-- Header -->
         <div class="top-meta">
-            <span class="app-tag">JKBOSE Helper</span>
             <span class="stars-pill">★ Student Reviews</span>
         </div>
 
@@ -288,7 +263,6 @@
                         <div class="reviewer-class" id="reviewerInfo">Class 12th • Srinagar</div>
                     </div>
                 </div>
-                <span class="lang-pill" id="reviewLang">English</span>
             </div>
 
             <div class="review-text" id="reviewText">
@@ -314,33 +288,29 @@
 
     <script>
         const studentReviews = [
-            // Girls - English
-            { name: "Areeba Mir", gender: "girl", classInfo: "Class 12th • Srinagar", lang: "English", rating: "★★★★★ 5.0", text: "JKBOSE Helper makes checking exam dates and updates so quick and stress-free. Very clean and helpful app!" },
-            { name: "Mehak Sharma", gender: "girl", classInfo: "Class 10th • Jammu", lang: "English", rating: "★★★★★ 5.0", text: "Super easy to use during exam days. I can check my schedule in seconds without searching everywhere." },
-            { name: "Zoya Bhat", gender: "girl", classInfo: "Class 11th • Anantnag", lang: "English", rating: "★★★★☆ 4.8", text: "Really neat interface and fast updates for JKBOSE students. Saves a lot of time before exams." },
-            { name: "Simran Kour", gender: "girl", classInfo: "Class 12th • Samba", lang: "English", rating: "★★★★★ 5.0", text: "One of the most useful apps for JKBOSE students. Everything looks organized and easy to read." },
-            { name: "Hooria Dar", gender: "girl", classInfo: "Class 10th • Baramulla", lang: "English", rating: "★★★★★ 5.0", text: "Love how simple and distraction-free this app is. Great help for keeping track of papers." },
+            // Girls
+            { name: "Areeba Mir", gender: "girl", classInfo: "Class 12th • Srinagar", rating: "★★★★★ 5.0", text: "Checking exam dates and updates is so quick and stress-free now. Very clean and helpful app!" },
+            { name: "Mehak Sharma", gender: "girl", classInfo: "Class 10th • Jammu", rating: "★★★★★ 5.0", text: "Super easy to use during exam days. I can check my schedule in seconds without searching everywhere." },
+            { name: "Zoya Bhat", gender: "girl", classInfo: "Class 11th • Anantnag", rating: "★★★★☆ 4.8", text: "Really neat interface and fast updates for students. Saves a lot of time before exams." },
+            { name: "Simran Kour", gender: "girl", classInfo: "Class 12th • Samba", rating: "★★★★★ 5.0", text: "One of the most useful apps for board students. Everything looks organized and easy to read." },
+            { name: "Hooria Dar", gender: "girl", classInfo: "Class 10th • Baramulla", rating: "★★★★★ 5.0", text: "Love how simple and distraction-free this app is. Great help for keeping track of papers." },
+            { name: "Sana Lone", gender: "girl", classInfo: "Class 12th • Pulwama", rating: "★★★★★ 5.0", text: "Bahut hi helpful app hai students ke liye. Exam updates ek jagah mil jaate hain, tension kam hoti hai!" },
+            { name: "Riya Verma", gender: "girl", classInfo: "Class 11th • Udhampur", rating: "★★★★★ 5.0", text: "App ka design kaafi pyaara aur simple hai. Class aur exam details easily check ho jaati hain." },
+            { name: "Iqra Sofi", gender: "girl", classInfo: "Class 10th • Budgam", rating: "★★★★☆ 4.9", text: "Exam time mein yeh app kaafi kaam aata hai. Fast hai aur faltu confusion bilkul nahi hai." },
+            { name: "Neha Dogra", gender: "girl", classInfo: "Class 12th • Kathua", rating: "★★★★★ 5.0", text: "Sach mein bohot badhiya app banaya hai. Har student ke phone mein hona chahiye." },
+            { name: "Bisma Jan", gender: "girl", classInfo: "Class 11th • Kupwara", rating: "★★★★★ 5.0", text: "Mera exam schedule check karna ab bohot aasan ho gaya hai. Thank you so much!" },
 
-            // Girls - Hinglish
-            { name: "Sana Lone", gender: "girl", classInfo: "Class 12th • Pulwama", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bahut hi helpful app hai JKBOSE students ke liye. Exam updates ek jagah mil jaate hain, tension kam hoti hai!" },
-            { name: "Riya Verma", gender: "girl", classInfo: "Class 11th • Udhampur", lang: "Hinglish", rating: "★★★★★ 5.0", text: "App ka design kaafi pyaara aur simple hai. Class aur exam details easily check ho jaati hain." },
-            { name: "Iqra Sofi", gender: "girl", classInfo: "Class 10th • Budgam", lang: "Hinglish", rating: "★★★★☆ 4.9", text: "Exam time mein yeh app kaafi kaam aata hai. Fast hai aur faltu ads ya confusion bilkul nahi hai." },
-            { name: "Neha Dogra", gender: "girl", classInfo: "Class 12th • Kathua", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Sach mein bohot badhiya app banaya hai. Har JKBOSE student ke phone mein hona chahiye." },
-            { name: "Bisma Jan", gender: "girl", classInfo: "Class 11th • Kupwara", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Mera exam schedule check karna ab bohot aasan ho gaya hai. Thank you JKBOSE Helper team!" },
-
-            // Boys - English
-            { name: "Danish Ahmad", gender: "boy", classInfo: "Class 12th • Srinagar", lang: "English", rating: "★★★★★ 5.0", text: "Smooth performance and super helpful for JKBOSE exam updates. Makes daily revision planning much easier." },
-            { name: "Rohan Raina", gender: "boy", classInfo: "Class 10th • Jammu", lang: "English", rating: "★★★★★ 5.0", text: "Clean layout and instant access to exam info. Definitely a must-have app for JKBOSE students." },
-            { name: "Adnan Malik", gender: "boy", classInfo: "Class 11th • Sopore", lang: "English", rating: "★★★★☆ 4.8", text: "Very handy app during board and bi-annual exams. Simple, fast, and straight to the point." },
-            { name: "Vansh Gupta", gender: "boy", classInfo: "Class 12th • Rajouri", lang: "English", rating: "★★★★★ 5.0", text: "Great job on the UI and speed. Checking subject schedules takes almost no effort at all." },
-            { name: "Faizan Sheikh", gender: "boy", classInfo: "Class 10th • Shopian", lang: "English", rating: "★★★★★ 5.0", text: "Reliable and easy to navigate even on slower connections. Very supportive app for students." },
-
-            // Boys - Hinglish
-            { name: "Umar Farooq", gender: "boy", classInfo: "Class 12th • Ganderbal", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bhai yeh app exam ke time bohot kaam aata hai. Sab kuch clearly dikhta hai aur load bhi jaldi hota hai." },
-            { name: "Aryan Sharma", gender: "boy", classInfo: "Class 11th • Reasi", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bahut mast app hai! Pehle alag alag jagah dhundhna padta tha, ab yahan aaram se check kar leta hoon." },
-            { name: "Bilal Wani", gender: "boy", classInfo: "Class 10th • Kulgam", lang: "Hinglish", rating: "★★★★☆ 4.9", text: "Students ke liye kaafi acha initiative hai. Interface clean hai aur use karna bilkul aasan hai." },
-            { name: "Karan Thakur", gender: "boy", classInfo: "Class 12th • Ramban", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Dil se acha laga yeh app use karke. Exam dates aur details dekhna ab kaafi easy ho gaya hai." },
-            { name: "Saqib Rather", gender: "boy", classInfo: "Class 11th • Bandipora", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bahut hi useful app hai JKBOSE walon ke liye. Keep updating like this, bohot help milti hai!" }
+            // Boys
+            { name: "Danish Ahmad", gender: "boy", classInfo: "Class 12th • Srinagar", rating: "★★★★★ 5.0", text: "Smooth performance and super helpful for exam updates. Makes daily revision planning much easier." },
+            { name: "Rohan Raina", gender: "boy", classInfo: "Class 10th • Jammu", rating: "★★★★★ 5.0", text: "Clean layout and instant access to exam info. Definitely a must-have app for students." },
+            { name: "Adnan Malik", gender: "boy", classInfo: "Class 11th • Sopore", rating: "★★★★☆ 4.8", text: "Very handy app during board and bi-annual exams. Simple, fast, and straight to the point." },
+            { name: "Vansh Gupta", gender: "boy", classInfo: "Class 12th • Rajouri", rating: "★★★★★ 5.0", text: "Great job on the UI and speed. Checking subject schedules takes almost no effort at all." },
+            { name: "Faizan Sheikh", gender: "boy", classInfo: "Class 10th • Shopian", rating: "★★★★★ 5.0", text: "Reliable and easy to navigate even on slower connections. Very supportive app for students." },
+            { name: "Umar Farooq", gender: "boy", classInfo: "Class 12th • Ganderbal", rating: "★★★★★ 5.0", text: "Bhai yeh app exam ke time bohot kaam aata hai. Sab kuch clearly dikhta hai aur load bhi jaldi hota hai." },
+            { name: "Aryan Sharma", gender: "boy", classInfo: "Class 11th • Reasi", rating: "★★★★★ 5.0", text: "Bahut mast app hai! Pehle alag alag jagah dhundhna padta tha, ab yahan aaram se check kar leta hoon." },
+            { name: "Bilal Wani", gender: "boy", classInfo: "Class 10th • Kulgam", rating: "★★★★☆ 4.9", text: "Students ke liye kaafi acha initiative hai. Interface clean hai aur use karna bilkul aasan hai." },
+            { name: "Karan Thakur", gender: "boy", classInfo: "Class 12th • Ramban", rating: "★★★★★ 5.0", text: "Dil se acha laga yeh app use karke. Exam dates aur details dekhna ab kaafi easy ho gaya hai." },
+            { name: "Saqib Rather", gender: "boy", classInfo: "Class 11th • Bandipora", rating: "★★★★★ 5.0", text: "Bahut hi useful app hai students ke liye. Keep updating like this, bohot help milti hai!" }
         ];
 
         let lastIndex = -1;
@@ -373,7 +343,6 @@
 
                 document.getElementById('reviewerName').innerText = item.name;
                 document.getElementById('reviewerInfo').innerText = item.classInfo;
-                document.getElementById('reviewLang').innerText = item.lang;
                 document.getElementById('reviewText').innerText = `"${item.text}"`;
                 document.getElementById('reviewRating').innerText = item.rating;
 
