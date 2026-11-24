@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>JKBose Helper - Educational Quote</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JKBose Helper - Student Reviews</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
 
         body {
             min-height: 100vh;
@@ -22,50 +28,50 @@
 
         /* Asymmetric Bubble Design Framework */
         .dialog {
-            max-width: 320px;
+            max-width: 330px;
             width: 100%;
             background: #ffffff;
-            border-radius: 40px 40px 8px 40px;
-            padding: 28px 24px 20px 24px;
+            border-radius: 38px 38px 10px 38px;
+            padding: 26px 20px 18px 20px;
             position: relative;
-            box-shadow: 0 30px 70px -10px rgba(79, 70, 229, 0.25);
-            border: 4px solid #4F46E5;
+            box-shadow: 0 28px 65px -12px rgba(79, 70, 229, 0.25);
+            border: 3.5px solid #4F46E5;
             text-align: center;
             transform-origin: bottom left;
-            animation: popIn 0.6s cubic-bezier(0.34, 1.76, 0.64, 1) forwards;
-            transition: all 0.3s ease;
+            animation: popIn 0.55s cubic-bezier(0.34, 1.76, 0.64, 1) forwards;
+            transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
         @keyframes popIn {
-            0% { transform: scale(0.5) rotate(-8deg); opacity: 0; }
+            0% { transform: scale(0.55) rotate(-6deg); opacity: 0; }
             100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
         .dialog.exit-animation {
-            animation: popOut 0.3s cubic-bezier(0.36, -0.07, 0.57, -0.2) forwards;
+            animation: popOut 0.28s cubic-bezier(0.36, -0.07, 0.57, -0.2) forwards;
         }
 
         @keyframes popOut {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0.7) translateY(30px); opacity: 0; }
+            100% { transform: scale(0.72) translateY(26px); opacity: 0; }
         }
 
         /* Mascot Container */
         .avatar-container {
-            width: 86px;
-            height: 86px;
-            margin: -58px auto 14px;
+            width: 82px;
+            height: 82px;
+            margin: -56px auto 12px;
             position: relative;
-            background: #4F46E5;
-            border-radius: 30px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            border-radius: 28px;
             padding: 4px;
-            box-shadow: 0 12px 24px -6px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 12px 24px -6px rgba(79, 70, 229, 0.42);
             animation: gentleSwing 4s ease-in-out infinite;
         }
 
         @keyframes gentleSwing {
             0%, 100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-5px) rotate(3deg); }
+            50% { transform: translateY(-4px) rotate(3deg); }
         }
 
         .teddy-bear {
@@ -73,84 +79,189 @@
             height: 100%;
             object-fit: contain;
             background: #ffffff;
-            border-radius: 26px;
-        }
-
-        /* Content Card */
-        .notice-canvas {
-            background: #F8FAFC;
             border-radius: 24px;
-            padding: 20px 16px;
-            margin-bottom: 20px;
-            border: 1px dashed #CBD5E1;
-            position: relative;
         }
 
-        .notice-title {
-            font-size: 14px;
+        /* Top Header & Rating Pill */
+        .top-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 0 4px;
+        }
+
+        .app-tag {
+            font-size: 11px;
             font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 8px;
+            color: #4F46E5;
+            background: #EEF2FF;
+            padding: 5px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.2px;
+        }
+
+        .stars-pill {
+            font-size: 11px;
+            font-weight: 800;
+            color: #B45309;
+            background: #FEF3C7;
+            padding: 5px 10px;
+            border-radius: 999px;
+        }
+
+        /* Review Card */
+        .review-canvas {
+            background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+            border-radius: 24px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border: 1.5px solid #E2E8F0;
+            text-align: left;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .review-canvas.fade-swap {
+            opacity: 0.35;
+            transform: scale(0.98);
+        }
+
+        .reviewer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reviewer-badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .badge-girl {
+            background: linear-gradient(135deg, #EC4899, #8B5CF6);
+        }
+
+        .badge-boy {
+            background: linear-gradient(135deg, #2563EB, #4F46E5);
+        }
+
+        .reviewer-name {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #0F172A;
+            line-height: 1.2;
+        }
+
+        .reviewer-class {
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748B;
+            margin-top: 2px;
+        }
+
+        .lang-pill {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 8px;
+            background: #E0E7FF;
+            color: #3730A3;
+            flex-shrink: 0;
+        }
+
+        .review-text {
+            font-size: 13px;
+            color: #1E293B;
+            line-height: 1.55;
+            font-weight: 600;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 16px;
+            border: 1px dashed #CBD5E1;
+        }
+
+        .review-footer {
+            margin-top: 9px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: #64748B;
+            font-weight: 700;
+            padding: 0 2px;
+        }
+
+        .verified-badge {
+            color: #059669;
+        }
+
+        /* Buttons Row */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .next-btn {
+            background: #EEF2FF;
+            color: #4F46E5;
+            padding: 14px 14px;
+            border-radius: 18px;
+            border: 1.5px solid #C7D2FE;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.12s ease, background-color 0.15s ease;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
         }
 
-        .notice-title .accent-dot {
-            width: 6px;
-            height: 6px;
-            background: #4F46E5;
-            border-radius: 50%;
+        .next-btn:active {
+            transform: scale(0.96);
+            background: #E0E7FF;
         }
 
-        .notice-content {
-            font-size: 13px;
-            color: #334155;
-            line-height: 1.6;
-            font-weight: 600;
-            text-align: center;
-            font-style: italic;
-        }
-
-        .notice-highlight {
-            color: #4F46E5;
+        .action-btn {
+            background: #0F172A;
+            color: #ffffff;
+            padding: 14px 16px;
+            border-radius: 18px;
+            border: none;
+            font-size: 13.5px;
             font-weight: 800;
-            margin-top: 8px;
-            display: block;
-            font-style: normal;
-            font-size: 12px;
-        }
-
-        /* Primary Action Button (Dismiss) */
-        .action-btn { 
-            background: #0f172a;
-            color: #ffffff; 
-            padding: 16px 20px; 
-            border-radius: 20px; 
-            border: none; 
-            font-size: 14px; 
-            font-weight: 800; 
-            width: 100%; 
-            cursor: pointer; 
-            margin-bottom: 14px;
-            letter-spacing: 0.3px;
-            box-shadow: 0 10px 25px -6px rgba(15, 23, 42, 0.3);
-            transition: all 0.25s ease;
+            flex: 1.15;
+            cursor: pointer;
+            letter-spacing: 0.2px;
+            box-shadow: 0 10px 22px -6px rgba(15, 23, 42, 0.35);
+            transition: transform 0.12s ease, background-color 0.15s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
-        .action-btn:hover {
-            background: #1e293b;
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px -4px rgba(15, 23, 42, 0.4);
-        }
-
-        .action-btn:active { 
-            transform: translateY(1px);
+        .action-btn:active {
+            transform: scale(0.96);
+            background: #1E293B;
         }
     </style>
 </head>
@@ -160,58 +271,126 @@
         <div class="avatar-container">
             <img src="https://media.tenor.com/-aW73OVUtyYAAAAi/tkthao219-bubududu.gif" alt="Mascot" class="teddy-bear">
         </div>
-        
-        <!-- Notice Canvas -->
-        <div class="notice-canvas">
-            <div class="notice-title">
-                <span class="accent-dot"></span>
-                Daily Inspiration
-                <span class="accent-dot"></span>
-            </div>
-            <div class="notice-content" id="quoteText">
-                "Loading daily wisdom..."
-            </div>
-            <span class="notice-highlight" id="quoteAuthor">— Author</span>
+
+        <!-- Header -->
+        <div class="top-meta">
+            <span class="app-tag">JKBOSE Helper</span>
+            <span class="stars-pill">★ Student Reviews</span>
         </div>
 
-        <!-- Primary Action Button -->
-        <button class="action-btn" onclick="handleClose()">
-            <span>✨</span> Got It
-        </button>
+        <!-- Review Canvas -->
+        <div class="review-canvas" id="reviewCanvas">
+            <div class="reviewer-row">
+                <div class="reviewer-info">
+                    <div class="reviewer-badge badge-girl" id="reviewerAvatar">A</div>
+                    <div>
+                        <div class="reviewer-name" id="reviewerName">Areeba Mir</div>
+                        <div class="reviewer-class" id="reviewerInfo">Class 12th • Srinagar</div>
+                    </div>
+                </div>
+                <span class="lang-pill" id="reviewLang">English</span>
+            </div>
+
+            <div class="review-text" id="reviewText">
+                "Loading student review..."
+            </div>
+
+            <div class="review-footer">
+                <span class="verified-badge">✓ Student Feedback</span>
+                <span id="reviewRating">★★★★★ 5.0</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="btn-group">
+            <button type="button" class="next-btn" onclick="displayRandomReview()">
+                <span>↻</span> Next Review
+            </button>
+            <button type="button" class="action-btn" onclick="handleClose()">
+                <span>✨</span> Got It
+            </button>
+        </div>
     </div>
 
     <script>
-        const educationalQuotes = [
-            { quote: "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela" },
-            { quote: "The beautiful thing about learning is that no one can take it away from you.", author: "B.B. King" },
-            { quote: "Live as if you were to die tomorrow. Learn as if you were to live forever.", author: "Mahatma Gandhi" },
-            { quote: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
-            { quote: "The roots of education are bitter, but the fruit is sweet.", author: "Aristotle" },
-            { quote: "Education is not preparation for life; education is life itself.", author: "John Dewey" },
-            { quote: "Change is the end result of all true learning.", author: "Leo Buscaglia" },
-            { quote: "Tell me and I forget. Teach me and I remember. Involve me and I learn.", author: "Benjamin Franklin" },
-            { quote: "The mind is not a vessel to be filled, but a fire to be kindled.", author: "Plutarch" },
-            { quote: "Learning never exhausts the mind.", author: "Leonardo da Vinci" }
+        const studentReviews = [
+            // Girls - English
+            { name: "Areeba Mir", gender: "girl", classInfo: "Class 12th • Srinagar", lang: "English", rating: "★★★★★ 5.0", text: "JKBOSE Helper makes checking exam dates and updates so quick and stress-free. Very clean and helpful app!" },
+            { name: "Mehak Sharma", gender: "girl", classInfo: "Class 10th • Jammu", lang: "English", rating: "★★★★★ 5.0", text: "Super easy to use during exam days. I can check my schedule in seconds without searching everywhere." },
+            { name: "Zoya Bhat", gender: "girl", classInfo: "Class 11th • Anantnag", lang: "English", rating: "★★★★☆ 4.8", text: "Really neat interface and fast updates for JKBOSE students. Saves a lot of time before exams." },
+            { name: "Simran Kour", gender: "girl", classInfo: "Class 12th • Samba", lang: "English", rating: "★★★★★ 5.0", text: "One of the most useful apps for JKBOSE students. Everything looks organized and easy to read." },
+            { name: "Hooria Dar", gender: "girl", classInfo: "Class 10th • Baramulla", lang: "English", rating: "★★★★★ 5.0", text: "Love how simple and distraction-free this app is. Great help for keeping track of papers." },
+
+            // Girls - Hinglish
+            { name: "Sana Lone", gender: "girl", classInfo: "Class 12th • Pulwama", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bahut hi helpful app hai JKBOSE students ke liye. Exam updates ek jagah mil jaate hain, tension kam hoti hai!" },
+            { name: "Riya Verma", gender: "girl", classInfo: "Class 11th • Udhampur", lang: "Hinglish", rating: "★★★★★ 5.0", text: "App ka design kaafi pyaara aur simple hai. Class aur exam details easily check ho jaati hain." },
+            { name: "Iqra Sofi", gender: "girl", classInfo: "Class 10th • Budgam", lang: "Hinglish", rating: "★★★★☆ 4.9", text: "Exam time mein yeh app kaafi kaam aata hai. Fast hai aur faltu ads ya confusion bilkul nahi hai." },
+            { name: "Neha Dogra", gender: "girl", classInfo: "Class 12th • Kathua", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Sach mein bohot badhiya app banaya hai. Har JKBOSE student ke phone mein hona chahiye." },
+            { name: "Bisma Jan", gender: "girl", classInfo: "Class 11th • Kupwara", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Mera exam schedule check karna ab bohot aasan ho gaya hai. Thank you JKBOSE Helper team!" },
+
+            // Boys - English
+            { name: "Danish Ahmad", gender: "boy", classInfo: "Class 12th • Srinagar", lang: "English", rating: "★★★★★ 5.0", text: "Smooth performance and super helpful for JKBOSE exam updates. Makes daily revision planning much easier." },
+            { name: "Rohan Raina", gender: "boy", classInfo: "Class 10th • Jammu", lang: "English", rating: "★★★★★ 5.0", text: "Clean layout and instant access to exam info. Definitely a must-have app for JKBOSE students." },
+            { name: "Adnan Malik", gender: "boy", classInfo: "Class 11th • Sopore", lang: "English", rating: "★★★★☆ 4.8", text: "Very handy app during board and bi-annual exams. Simple, fast, and straight to the point." },
+            { name: "Vansh Gupta", gender: "boy", classInfo: "Class 12th • Rajouri", lang: "English", rating: "★★★★★ 5.0", text: "Great job on the UI and speed. Checking subject schedules takes almost no effort at all." },
+            { name: "Faizan Sheikh", gender: "boy", classInfo: "Class 10th • Shopian", lang: "English", rating: "★★★★★ 5.0", text: "Reliable and easy to navigate even on slower connections. Very supportive app for students." },
+
+            // Boys - Hinglish
+            { name: "Umar Farooq", gender: "boy", classInfo: "Class 12th • Ganderbal", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bhai yeh app exam ke time bohot kaam aata hai. Sab kuch clearly dikhta hai aur load bhi jaldi hota hai." },
+            { name: "Aryan Sharma", gender: "boy", classInfo: "Class 11th • Reasi", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bahut mast app hai! Pehle alag alag jagah dhundhna padta tha, ab yahan aaram se check kar leta hoon." },
+            { name: "Bilal Wani", gender: "boy", classInfo: "Class 10th • Kulgam", lang: "Hinglish", rating: "★★★★☆ 4.9", text: "Students ke liye kaafi acha initiative hai. Interface clean hai aur use karna bilkul aasan hai." },
+            { name: "Karan Thakur", gender: "boy", classInfo: "Class 12th • Ramban", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Dil se acha laga yeh app use karke. Exam dates aur details dekhna ab kaafi easy ho gaya hai." },
+            { name: "Saqib Rather", gender: "boy", classInfo: "Class 11th • Bandipora", lang: "Hinglish", rating: "★★★★★ 5.0", text: "Bahut hi useful app hai JKBOSE walon ke liye. Keep updating like this, bohot help milti hai!" }
         ];
 
-        function displayRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * educationalQuotes.length);
-            const selected = educationalQuotes[randomIndex];
-            document.getElementById('quoteText').innerText = `"${selected.quote}"`;
-            document.getElementById('quoteAuthor').innerText = `— ${selected.author}`;
+        let lastIndex = -1;
+
+        function getInitials(fullName) {
+            const parts = fullName.trim().split(/\s+/);
+            return parts.length >= 2
+                ? (parts[0][0] + parts[1][0]).toUpperCase()
+                : parts[0][0].toUpperCase();
         }
 
-        function handleClose() { 
+        function displayRandomReview() {
+            const canvas = document.getElementById('reviewCanvas');
+            canvas.classList.add('fade-swap');
+
+            let randomIndex = Math.floor(Math.random() * studentReviews.length);
+            if (studentReviews.length > 1) {
+                while (randomIndex === lastIndex) {
+                    randomIndex = Math.floor(Math.random() * studentReviews.length);
+                }
+            }
+            lastIndex = randomIndex;
+
+            const item = studentReviews[randomIndex];
+
+            setTimeout(() => {
+                const avatar = document.getElementById('reviewerAvatar');
+                avatar.innerText = getInitials(item.name);
+                avatar.className = `reviewer-badge ${item.gender === 'girl' ? 'badge-girl' : 'badge-boy'}`;
+
+                document.getElementById('reviewerName').innerText = item.name;
+                document.getElementById('reviewerInfo').innerText = item.classInfo;
+                document.getElementById('reviewLang').innerText = item.lang;
+                document.getElementById('reviewText').innerText = `"${item.text}"`;
+                document.getElementById('reviewRating').innerText = item.rating;
+
+                canvas.classList.remove('fade-swap');
+            }, 110);
+        }
+
+        function handleClose() {
             const dialog = document.getElementById('dialog');
             dialog.classList.add('exit-animation');
             setTimeout(() => {
                 dialog.style.display = 'none';
-            }, 300);
+            }, 280);
         }
 
-        // Load a quote every time the dialog is opened/loaded
         window.onload = function() {
-            displayRandomQuote();
+            displayRandomReview();
         };
     </script>
 </body>
